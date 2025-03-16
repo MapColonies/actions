@@ -36,5 +36,5 @@ jobs:
       - name: Test Login to Artifactory Action
         id: test-artifactory-login
         uses: ./actions/artifactory-login
-        secrets: inherit
+        # secrets: inherit
 
