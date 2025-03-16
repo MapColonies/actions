@@ -4,6 +4,14 @@ description: "Logs into the Artifactory registry."
 runs:
   using: composite
   steps:
+    - name: Use Secret in Run
+      run: echo "The secret is M"
+      shell: bash
+
+    - name: Use Secret in Run
+      run: echo "The secret is ${{ ACR_URL }}"
+      shell: bash
+
     # - name: Checkout shared workflows
     #   env:
     #     action_repo: ${{ github.action_repository }}
@@ -14,12 +22,6 @@ runs:
     #     ref: ${{ env.action_ref }}
     #     path: _shared-workflows-artifactory-login
     #     persist-credentials: false
-
-    - name: Use Secret in Run
-      run: echo "The secret is M"
-
-    - name: Use Secret in Run
-      run: echo "The secret is ${{ ACR_URL }}"
 
     # - name: Login to registry
     #   uses: azure/docker-login@83efeb77770c98b620c73055fbb59b2847e17dc0 # v1

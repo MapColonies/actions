@@ -6,21 +6,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - "actions/artifactory-login/**"
-      - ".github/workflows/test-artifactory-login.yaml"
-
-  pull_request:
-    paths:
-      - "actions/artifactory-login/**"
-      - ".github/workflows/test-artifactory-login.yaml"
-    types:
-      - edited
-      - opened
-      - ready_for_review
-      - synchronize
-
-  merge_group:
 
 permissions:
   contents: read
