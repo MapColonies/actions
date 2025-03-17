@@ -5,32 +5,34 @@ on:
     inputs:
       scope:
         description: "Scope of artifacts.json file to update"
-        required: true
+        required: false
+        default: "infra"
       type:
         description: "Artifact's type"
         required: false
         default: "docker"
       artifact-name:
         description: "Artifact's name"
-        required: true
+        required: false
       artifact-tag:
         description: "Artifact's tag"
-        required: true
+        required: false
   workflow_call:
     inputs:
       scope:
         description: "Scope of artifacts.json file to update"
-        required: true
+        required: false
+        default: "infra"
       type:
         description: "Artifact's type"
         required: false
         default: "docker"
       artifact-name:
         description: "Artifact's name"
-        required: true
+        required: false
       artifact-tag:
         description: "Artifact's tag"
-        required: true
+        required: false
   push:
     branches:
       - master
