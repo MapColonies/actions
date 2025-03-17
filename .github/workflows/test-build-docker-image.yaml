@@ -25,7 +25,7 @@ jobs:
       - name: Build Docker Image
         uses: ./actions/build-docker-image
         with:
-          context: elastic-alertmanager-connector
+          context: actions/build-docker-image
           scope: infra
-          repository: MapColonies/infra.git
+          repository: MapColonies/actions.git
           registry: ${{ secrets.ACR_URL }}
