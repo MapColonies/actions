@@ -36,9 +36,7 @@ runs:
 
     - name: Get chart's name
       id: set-chart-name
-      run: |
-        pwd
-        ls -la
+      run: pwd
       shell: bash
 
 
