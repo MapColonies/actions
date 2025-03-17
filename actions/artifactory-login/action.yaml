@@ -26,10 +26,6 @@ runs:
         repository: ${{ env.action_repo }}
         ref: ${{ env.action_ref }}
         path: _shared-workflows-artifactory-login
-        
-    - name: Use Secret in Run
-      run: echo "The secret is ${{ inputs.registry }}"
-      shell: bash
       
     - name: Login to registry
       uses: azure/docker-login@83efeb77770c98b620c73055fbb59b2847e17dc0 # v1
