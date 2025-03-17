@@ -1,0 +1,31 @@
+name: Test Build and Push Docker Image
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches:
+      - master
+
+jobs:
+  test-build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Test Login to Artifactory Action
+        id: test-artifactory-login
+        uses: ./actions/artifactory-login
+        with:
+          registry: ${{ secrets.ACR_URL }}
+          username: ${{ secrets.ACR_PUSH_USER }}
+          password: ${{ secrets.ACR_PUSH_TOKEN }}
+
+      - name: Build Helm Chart
+        uses: ./actions/build-and-push-helm
+        with:
+          context: .github/workflows
+          scope: infra
+          repository: MapColonies/infra-test
+          registry: ${{ secrets.ACR_URL }}

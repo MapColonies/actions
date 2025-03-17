@@ -25,7 +25,7 @@ runs:
       with:
         repository: ${{ env.action_repo }}
         ref: ${{ env.action_ref }}
-        path: _shared-workflows-build-docker-image
+        path: _shared-workflows-build-and-push-docker
 
     - name: Setup docker image name and downcase it
       id: setup_image_name
