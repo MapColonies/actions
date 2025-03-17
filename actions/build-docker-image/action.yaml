@@ -17,14 +17,15 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout repository from latest commit
+    - name: Checkout shared workflows
       env:
         action_repo: ${{ github.action_repository }}
         action_ref: ${{ github.action_ref }}
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
-        repository: ${{ inputs.repository }}
-        # path: ${{ inputs.context }}
+        repository: ${{ env.action_repo }}
+        ref: ${{ env.action_ref }}
+        path: _shared-workflows-build-docker-image
 
 
     # - name: Setup docker image name and downcase it
