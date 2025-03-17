@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update artifacts.json
-        uses: ./actions/update-artifacts-json
+        uses: ./actions/update-artifacts-file
         with:
           # scope: ${{ github.event.inputs.scope }}
           # type: ${{ github.event.inputs.type }}
