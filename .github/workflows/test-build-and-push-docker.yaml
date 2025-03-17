@@ -3,9 +3,6 @@ name: Test Build and Push Docker Image
 on:
   workflow_dispatch:
   workflow_call:
-  push:
-    branches:
-      - master
 
 jobs:
   test-build-and-push:

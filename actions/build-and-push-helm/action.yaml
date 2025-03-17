@@ -6,7 +6,7 @@ inputs:
     required: true
     default: ""
   repository:
-    description: "Repository for the Docker image."
+    description: "Repository for the Helm Chart."
     required: false
 outputs:
   chart:
@@ -16,15 +16,13 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout shared workflows
+    - name: Checkout helm chart repository
       env:
         action_repo: ${{ github.action_repository }}
         action_ref: ${{ github.action_ref }}
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
-        repository: ${{ env.action_repo }}
-        ref: ${{ env.action_ref }}
-        path: _shared-workflows-build-and-push-helm
+        repository: ${{ inputs.repository }}
 
     - name: Setup Helm
       uses: azure/setup-helm@v3.5

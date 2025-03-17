@@ -3,9 +3,6 @@ name: Test artifactory-login action
 on:
   workflow_dispatch:
   workflow_call:
-  push:
-    branches:
-      - master
 
 permissions:
   contents: read
