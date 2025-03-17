@@ -27,5 +27,5 @@ jobs:
         with:
           context: actions/build-and-push-docker
           scope: infra
-          repository: MapColonies/actions.git
+          repository: MapColonies/actions
           registry: ${{ secrets.ACR_URL }}
