@@ -9,8 +9,11 @@ runs:
       shell: bash
 
     - name: Use Secret in Run
-      run: echo "The secret is ${{ secrets.ACR_URL }}"
+      run: echo "The secret is ${ACR_URL}"
       shell: bash
+      env:
+        ACR_URL: ${{ secrets.ACR_URL }}
+
 
     # - name: Checkout shared workflows
     #   env:
