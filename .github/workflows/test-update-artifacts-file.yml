@@ -1,0 +1,50 @@
+name: Update artifacts.json
+
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "Scope of artifacts.json file to update"
+        required: true
+      type:
+        description: "Artifact's type"
+        required: false
+        default: "docker"
+      artifact-name:
+        description: "Artifact's name"
+        required: true
+      artifact-tag:
+        description: "Artifact's tag"
+        required: true
+  workflow_call:
+    inputs:
+      scope:
+        description: "Scope of artifacts.json file to update"
+        required: true
+      type:
+        description: "Artifact's type"
+        required: false
+        default: "docker"
+      artifact-name:
+        description: "Artifact's name"
+        required: true
+      artifact-tag:
+        description: "Artifact's tag"
+        required: true
+  push:
+    branches:
+      - master
+
+jobs:
+  update-artifacts-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update artifacts.json
+        uses: ./.github/actions/update-artifacts-json
+        with:
+          scope: ${{ github.event.inputs.scope }}
+          type: ${{ github.event.inputs.type }}
+          artifact-name: ${{ github.event.inputs['artifact-name'] }}
+          artifact-tag: ${{ github.event.inputs['artifact-tag'] }}
+          token: ${{ secrets.GH_PAT }}
+          registry: ${{ secrets.ACR_URL }}
