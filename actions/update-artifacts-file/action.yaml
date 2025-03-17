@@ -1,26 +1,26 @@
 name: "Update artifacts.json in helm-charts"
 description: "Updates the artifacts.json file in the specified scope within the helm-charts repository."
 inputs:
-  scope:
-    description: "Comma-separated list of scopes to update."
-    required: false
-  type:
-    description: "Artifact's type."
-    required: false
-    default: "docker"
-  artifact-name:
-    description: "Artifact's name."
-    required: false
-  artifact-tag:
-    description: "Artifact's tag."
-    required: false
+  # scope:
+  #   description: "Comma-separated list of scopes to update."
+  #   required: true
+  # type:
+  #   description: "Artifact's type."
+  #   required: false
+  #   default: "docker"
+  # artifact-name:
+  #   description: "Artifact's name."
+  #   required: true
+  # artifact-tag:
+  #   description: "Artifact's tag."
+  #   required: true
   token:
     description: "Personal Access Token (PAT) for the repository."
-    required: false
-  registry:
-    description: |
-      Azure Registry to authenticate against.
-    required: false
+    required: true
+  # registry:
+  #   description: |
+  #     Azure Registry to authenticate against.
+  #   required: true
 runs:
   using: "composite"
   steps:
@@ -31,10 +31,10 @@ runs:
         path: helm-charts
         token: ${{ inputs.token }}
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: "20"
+    # - name: Set up Node.js
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: "20"
 
     - name: Modify artifacts.json
       run: ./modify-artifacts-json.sh #${{ inputs.scope }} ${{ inputs.type }} ${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}

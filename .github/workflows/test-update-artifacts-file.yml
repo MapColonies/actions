@@ -42,11 +42,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update artifacts.json
-        uses: ./.github/actions/update-artifacts-json
+        uses: ./actions/update-artifacts-json
         with:
           # scope: ${{ github.event.inputs.scope }}
           # type: ${{ github.event.inputs.type }}
           # artifact-name: ${{ github.event.inputs['artifact-name'] }}
           # artifact-tag: ${{ github.event.inputs['artifact-tag'] }}
           token: ${{ secrets.GH_PAT }}
-          registry: ${{ secrets.ACR_URL }}
+          # registry: ${{ secrets.ACR_URL }}
