@@ -23,9 +23,9 @@ jobs:
           password: ${{ secrets.ACR_PUSH_TOKEN }}
 
       - name: Build Docker Image
-        uses: ./actions/build-docker-image
+        uses: ./actions/build-and-push-docker
         with:
-          context: actions/build-docker-image
+          context: actions/build-and-push-docker
           scope: infra
           repository: MapColonies/actions.git
           registry: ${{ secrets.ACR_URL }}
