@@ -37,6 +37,14 @@ runs:
     - name: Get chart's name
       id: set-chart-name
       run: |
+        pwd
+        ls -la
+      shell: bash
+
+
+    - name: Get chart's name
+      id: set-chart-name
+      run: |
         CHART=$(grep '^name:' Chart.yaml | awk '{print $2}')
         echo "chart=$CHART" >> $GITHUB_OUTPUT
       working-directory: ./helm
