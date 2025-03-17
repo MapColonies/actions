@@ -27,5 +27,5 @@ jobs:
         with:
           context: .github/workflows
           scope: infra
-          repository: MapColonies/infra-test
+          repository: MapColonies/actions
           registry: ${{ secrets.ACR_URL }}
