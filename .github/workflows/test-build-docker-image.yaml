@@ -28,3 +28,4 @@ jobs:
           context: elastic-alertmanager-connector
           scope: infra
           repository: MapColonies/infra.git
+          registry: ${{ secrets.ACR_URL }}

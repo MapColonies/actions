@@ -10,6 +10,10 @@ inputs:
   scope:
     description: "Scope or namespace for the Docker image."
     required: true
+  registry:
+    description: |
+      Azure Registry to authenticate against.
+    required: true
 runs:
   using: "composite"
   steps:
@@ -20,9 +24,9 @@ runs:
       id: setup_image_name
       run: |
         if [[ -z "${{ inputs.repository }}" ]]; then
-          DOCKER_IMAGE_NAME="${{ secrets.ACR_URL }}/${{ inputs.scope }}/${{ github.event.repository.name }}:${{ github.ref_name }}"
+          DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.scope }}/${{ github.event.repository.name }}:${{ github.ref_name }}"
         else
-          DOCKER_IMAGE_NAME="${{ secrets.ACR_URL }}/${{ inputs.repository }}:${{ github.ref_name }}"
+          DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.repository }}:${{ github.ref_name }}"
         fi
         echo "DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME,,}" >> $GITHUB_ENV
       shell: bash
