@@ -3,24 +3,24 @@ description: "Updates the artifacts.json file in the specified scope within the 
 inputs:
   scope:
     description: "Comma-separated list of scopes to update."
-    required: true
+    required: false
   type:
     description: "Artifact's type."
     required: false
     default: "docker"
   artifact-name:
     description: "Artifact's name."
-    required: true
+    required: false
   artifact-tag:
     description: "Artifact's tag."
-    required: true
+    required: false
   token:
     description: "Personal Access Token (PAT) for the repository."
-    required: true
+    required: false
   registry:
     description: |
       Azure Registry to authenticate against.
-    required: true
+    required: false
 runs:
   using: "composite"
   steps:
