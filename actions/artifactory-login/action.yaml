@@ -1,5 +1,18 @@
 name: "Artifactory Login"
 description: "Logs into the Artifactory registry."
+inputs:
+  registry:
+    description: |
+      Azure Registry to authenticate against.
+    required: true
+  username:
+    description: |
+      Azure Registry username.
+    required: true
+  password:
+    description: |
+      Azure Registry password.
+    required: true
 
 runs:
   using: composite
@@ -15,18 +28,12 @@ runs:
         path: _shared-workflows-artifactory-login
         
     - name: Use Secret in Run
-      run: echo "The secret is ${ACR_URL}"
+      run: echo "The secret is ${{ inputs.registry }}"
       shell: bash
-      env:
-        ACR_URL: ${{ secrets.ACR_URL }}
-
-
-
-
-    # - name: Login to registry
-    #   uses: azure/docker-login@83efeb77770c98b620c73055fbb59b2847e17dc0 # v1
-    #   # secrets: inherit
-    #   with:
-    #     login-server: ${{ ACR_URL }}
-    #     username: ${{ ACR_PUSH_USER }}
-    #     password: ${{ ACR_PUSH_TOKEN }}
+      
+    - name: Login to registry
+      uses: azure/docker-login@83efeb77770c98b620c73055fbb59b2847e17dc0 # v1
+      with:
+        login-server: ${{ inputs.registry }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}

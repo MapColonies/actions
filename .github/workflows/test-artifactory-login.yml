@@ -25,6 +25,8 @@ jobs:
       - name: Test Login to Artifactory Action
         id: test-artifactory-login
         uses: ./actions/artifactory-login
-        env:
-          ACR_URL: ${{ secrets.ACR_URL }}
+        with:
+          registry: ${{ secrets.ACR_URL }}
+          username: ${{ secrets.ACR_PUSH_USER }}
+          password: ${{ secrets.ACR_PUSH_TOKEN }}
 
