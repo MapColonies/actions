@@ -1,4 +1,4 @@
-name: Test Build and Push Helm Chart`
+name: Test Build and Push Helm Chart
 
 on:
   workflow_dispatch:

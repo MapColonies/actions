@@ -54,6 +54,6 @@ runs:
     - name: Publish chart to ACR
       run: |
         helm push ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz \
-          oci://${{ inputs.repository }}/helm/${{ inputs.scope }}
+          oci://${{ inputs.registry }}/helm/${{ inputs.scope }}
       working-directory: ./helm
       shell: bash
