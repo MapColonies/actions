@@ -49,4 +49,5 @@ jobs:
           # artifact-name: ${{ github.event.inputs['artifact-name'] }}
           # artifact-tag: ${{ github.event.inputs['artifact-tag'] }}
           token: ${{ secrets.GH_PAT }}
+          repository: MapColonies/helm-charts
           # registry: ${{ secrets.ACR_URL }}
