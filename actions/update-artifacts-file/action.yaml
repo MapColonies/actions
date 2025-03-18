@@ -24,12 +24,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout helm-charts repository
-      uses: actions/checkout@v4
-      with:
-        repository: MapColonies/helm-charts
-        path: helm-charts
-        token: ${{ inputs.token }}
+    # - name: Checkout helm-charts repository
+    #   uses: actions/checkout@v4
+    #   with:
+    #     repository: MapColonies/helm-charts
+    #     path: helm-charts
+    #     token: ${{ inputs.token }}
 
     - name: Checkout current repository
       uses: actions/checkout@v4
