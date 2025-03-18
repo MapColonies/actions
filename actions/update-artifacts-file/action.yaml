@@ -28,17 +28,24 @@ runs:
       uses: actions/checkout@v4
       with:
         repository: MapColonies/helm-charts
-        # path: helm-charts
+        path: helm-charts
         token: ${{ inputs.token }}
+
+    - name: Checkout current repository
+      uses: actions/checkout@v4
+      with:
+        path: .
+
+    - name: Modify artifacts.json
+      run: ./modify-artifacts-json.sh #${{ inputs.scope }} ${{ inputs.type }} ${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}
+      shell: bash
 
     # - name: Set up Node.js
     #   uses: actions/setup-node@v3
     #   with:
     #     node-version: "20"
 
-    - name: Modify artifacts.json
-      run: ./modify-artifacts-json.sh #${{ inputs.scope }} ${{ inputs.type }} ${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}
-      shell: bash
+
 
     # - name: Commit and Push Changes
     #   run: |
