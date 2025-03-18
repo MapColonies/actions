@@ -45,9 +45,9 @@ runs:
     # - name: Checkout current repository
     #   uses: actions/checkout@v4
 
-    - name: Modify artifacts.json
-      run: ./modify-artifacts-json.sh #${{ inputs.scope }} ${{ inputs.type }} ${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}
-      shell: bash
+    # - name: Modify artifacts.json
+    #   run: ./modify-artifacts-json.sh #${{ inputs.scope }} ${{ inputs.type }} ${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}
+    #   shell: bash
 
     # - name: Set up Node.js
     #   uses: actions/setup-node@v3
