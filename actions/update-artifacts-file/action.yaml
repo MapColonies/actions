@@ -1,6 +1,10 @@
 name: "Update artifacts.json in helm-charts"
 description: "Updates the artifacts.json file in the specified scope within the helm-charts repository."
 inputs:
+  context:
+    description: "Path to the helm directory."
+    required: true
+    default: "./helm"
   scope:
     description: "Comma-separated list of scopes to update."
     required: true
@@ -48,6 +52,8 @@ runs:
     - name: Modify artifacts.json
       run: ./modify-artifacts-json.sh #${{ inputs.scope }} ${{ inputs.type }} ${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}
       shell: bash
+      working-directory: ${{ inputs.context }}
+
 
     # - name: Set up Node.js
     #   uses: actions/setup-node@v3
