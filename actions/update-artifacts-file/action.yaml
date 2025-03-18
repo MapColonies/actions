@@ -33,8 +33,6 @@ runs:
 
     - name: Checkout current repository
       uses: actions/checkout@v4
-      with:
-        path: .
 
     - name: Modify artifacts.json
       run: ./modify-artifacts-json.sh #${{ inputs.scope }} ${{ inputs.type }} ${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}
