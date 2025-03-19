@@ -46,9 +46,11 @@ runs:
       working-directory: ${{ inputs.context }}
 
     - name: Run Hello Script
-      run: ./modify_artifacts.sh ${{ inputs.scope }} #${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}
+      run: ./modify_artifacts.sh 
       shell: bash
       working-directory: ${{ inputs.context }}
+      env:
+        SCOPE: ${{ inputs.scope }}
 
     - name: Set commit Permission
       run: chmod +x ./commit-changes.sh

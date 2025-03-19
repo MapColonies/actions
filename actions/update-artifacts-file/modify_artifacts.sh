@@ -1,6 +1,6 @@
 #!/bin/bash
 # Split string by comma
-echo "${{ inputs.scope }}" #| tr ',' '\n' | while read -r element; do
+echo "$SCOPE" #| tr ',' '\n' | while read -r element; do
   # cd to directory
   # pushd helm-charts/$element
   # pushd actions/.github/workflows/$element
