@@ -28,9 +28,11 @@ runs:
       run: pwd
       shell: bash
 
-    # - name: Set Execute Permission
-    #   run: chmod +x hello.sh
+    - name: Set Execute Permission
+      run: chmod +x hello.sh
+      shell: bash
 
-    # - name: Run Hello Script
-    #   run: ./hello.sh
+    - name: Run Hello Script
+      run: ./hello.sh
+      shell: bash
 
