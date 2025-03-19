@@ -12,6 +12,19 @@ inputs:
     description: "Path to the helm directory."
     required: true
     default: "./helm"
+  type:
+    description: "Artifact`s type"
+    type: string
+    required: false
+    default: "docker"
+  artifact-name:
+    description: "Artifact`s name"
+    type: string
+    required: true
+  artifact-tag:
+    description: "Artifact`s tag"
+    type: string
+    required: true
 runs:
   using: "composite"
   steps:
