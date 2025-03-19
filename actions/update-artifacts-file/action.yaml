@@ -1,98 +1,63 @@
-name: "Update artifacts.json in helm-charts"
-description: "Updates the artifacts.json file in the specified scope within the helm-charts repository."
+name: "Build and Push Helm Chart"
+description: "Builds and publishes a Helm chart to the specified registry."
 inputs:
-  # context:
-  #   description: "Path to the helm directory."
-  #   required: true
-  #   default: "./helm"
-  # scope:
-  #   description: "Comma-separated list of scopes to update."
-  #   required: true
-  # type:
-  #   description: "Artifact's type."
-  #   required: false
-  #   default: "docker"
-  # artifact-name:
-  #   description: "Artifact's name."
-  #   required: true
-  # artifact-tag:
-  #   description: "Artifact's tag."
-  #   required: true
-  # repository:
-  #   description: "Repository to update."
-  #   required: true
-  # token:
-  #   description: "Personal Access Token (PAT) for the repository."
-  #   required: true
-  # registry:
-  #   description: |
-  #     Azure Registry to authenticate against.
-  #   required: true
+  scope:
+    description: "Scope or namespace for the Helm chart."
+    required: true
+    default: ""
+  repository:
+    description: "Repository for the Helm Chart."
+    required: false
+  context:
+    description: "Path to the helm directory."
+    required: true
+    default: "./helm"
+outputs:
+  chart:
+    description: "Name of the Helm chart."
+  ver:
+    description: "Version of the Helm chart."
 runs:
   using: "composite"
   steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+    - name: Checkout helm chart repository
+      env:
+        action_repo: ${{ github.action_repository }}
+        action_ref: ${{ github.action_ref }}
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      with:
+        repository: ${{ inputs.repository }}
 
-    - name: Set Execute Permission
-      run: chmod +x hello.sh
+    - name: Setup Helm
+      uses: azure/setup-helm@v3.5
+      with:
+        version: "v3.12.0"
 
-    - name: Run Hello Script
-      run: ./hello.sh
-
-
-    # - name: Checkout shared workflows
-    #   env:
-    #     action_repo: ${{ github.action_repository }}
-    #     action_ref: ${{ github.action_ref }}
-    #   uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-    #   with:
-    #     repository: ${{ env.action_repo }}
-    #     ref: ${{ env.action_ref }}
-    #     path: ${{ inputs.scope }}
-
-    # - name: Checkout helm-charts repository
-    #   uses: actions/checkout@v4
-    #   with:
-    #     repository: MapColonies/helm-charts
-    #     path: helm-charts
-    #     token: ${{ inputs.token }}
-
-    # - name: Checkout current repository
-    #   uses: actions/checkout@v4
-
-    - name: Modify artifacts.json
-      run: ./modify-artifacts-json.sh #${{ inputs.scope }} ${{ inputs.type }} ${{ inputs.artifact-name }} ${{ inputs.artifact-tag }}
+    - name: Get chart's name
+      id: set-chart-name
+      run: |
+        CHART=$(grep '^name:' Chart.yaml | awk '{print $2}')
+        echo "chart=$CHART" >> $GITHUB_OUTPUT
+      working-directory: ${{ inputs.context }}
       shell: bash
-    #   working-directory: ${{ inputs.context }}
 
+    - name: Get chart's version
+      id: set-chart-version
+      run: |
+        VER=$(grep '^version:' Chart.yaml | awk '{print $2}')
+        echo "ver=$VER" >> $GITHUB_OUTPUT
+      working-directory: ${{ inputs.context }}
+      shell: bash
 
-    # - name: Set up Node.js
-    #   uses: actions/setup-node@v3
-    #   with:
-    #     node-version: "20"
+    - name: Package chart into tgz file
+      run: |
+        helm package . --dependency-update
+      working-directory: ${{ inputs.context }}
+      shell: bash
 
-
-
-    # - name: Commit and Push Changes
-    #   run: |
-    #     cd helm-charts
-    #     git config --global user.name "mapcolonies[bot]"
-    #     git config --global user.email "devops[bot]@mapcolonies.com"
-    #     git add .
-    #     # Commit changes; if no changes are staged, continue without failing
-    #     git commit -m "chore: update artifacts.json for ${{ inputs.scope }}" -m "with ${{ inputs.type }} artifact: ${{ inputs.artifact-name }}:${{ inputs.artifact-tag }}" || true
-    #     # Attempt to push changes, retrying up to 5 times if necessary
-    #     for attempt in {1..5}; do
-    #       if git push; then
-    #         echo "Changes pushed successfully."
-    #         break
-    #       else
-    #         echo "Push attempt $attempt failed; retrying in 5 seconds..."
-    #         sleep 5
-    #         git pull origin master --ff
-    #       fi
-    #     done
-    #   shell: bash
-    #   env:
-    #     GH_PAT: ${{ secrets.GH_PAT }}
+    - name: Publish chart to ACR
+      run: |
+        helm push ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz \
+          oci://${{ inputs.registry }}/helm/${{ inputs.scope }}
+      working-directory: ${{ inputs.context }}
+      shell: bash

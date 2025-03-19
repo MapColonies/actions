@@ -2,37 +2,8 @@ name: Update artifacts.json
 
 on:
   workflow_dispatch:
-    # inputs:
-    #   scope:
-    #     description: "Scope of artifacts.json file to update"
-    #     required: false
-    #     default: "infra"
-    #   type:
-    #     description: "Artifact's type"
-    #     required: false
-    #     default: "docker"
-    #   artifact-name:
-    #     description: "Artifact's name"
-    #     required: false
-    #   artifact-tag:
-    #     description: "Artifact's tag"
-    #     required: false
   workflow_call:
-    # inputs:
-    #   scope:
-    #     description: "Scope of artifacts.json file to update"
-    #     required: false
-    #     default: "infra"
-    #   type:
-    #     description: "Artifact's type"
-    #     required: false
-    #     default: "docker"
-    #   artifact-name:
-    #     description: "Artifact's name"
-    #     required: false
-    #   artifact-tag:
-    #     description: "Artifact's tag"
-    #     required: false
+
   push:
     branches:
       - master
@@ -41,19 +12,10 @@ jobs:
   update-artifacts-json:
     runs-on: ubuntu-latest
     steps:
-      # - name: Update artifacts.json
-      #   uses: ./actions/update-artifacts-file
-      #   with:
-      #     # scope: ${{ github.event.inputs.scope }}
-      #     # type: ${{ github.event.inputs.type }}
-      #     # artifact-name: ${{ github.event.inputs['artifact-name'] }}
-      #     # artifact-tag: ${{ github.event.inputs['artifact-tag'] }}
-      #     # token: ${{ secrets.GH_PAT }}
-      #     repository: MapColonies/actions
-      #     # registry: ${{ secrets.ACR_URL }}
-      #     # context: .github/workflows/infra
-      - name: Update artifacts.json
-        uses: ./actions/update-artifacts-file
+      - name: Build Helm Chart
+        uses: ./actions/build-and-push-helm
         with:
-          context: actions/update-artifacts-file
+          context: .github/workflows/helm
+          scope: infra
           repository: MapColonies/actions
+          registry: ${{ secrets.ACR_URL }}
