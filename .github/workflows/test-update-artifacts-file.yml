@@ -44,11 +44,11 @@ jobs:
       - name: Update artifacts.json
         uses: ./actions/update-artifacts-file
         with:
-          scope: ${{ github.event.inputs.scope }}
-          type: ${{ github.event.inputs.type }}
-          artifact-name: ${{ github.event.inputs['artifact-name'] }}
-          artifact-tag: ${{ github.event.inputs['artifact-tag'] }}
-          token: ${{ secrets.GH_PAT }}
+          # scope: ${{ github.event.inputs.scope }}
+          # type: ${{ github.event.inputs.type }}
+          # artifact-name: ${{ github.event.inputs['artifact-name'] }}
+          # artifact-tag: ${{ github.event.inputs['artifact-tag'] }}
+          # token: ${{ secrets.GH_PAT }}
           repository: MapColonies/actions
-          registry: ${{ secrets.ACR_URL }}
-          context: .github/workflows/infra
+          # registry: ${{ secrets.ACR_URL }}
+          # context: .github/workflows/infra
