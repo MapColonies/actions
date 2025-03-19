@@ -1,13 +1,13 @@
 name: "Update artifacts.json in helm-charts"
 description: "Updates the artifacts.json file in the specified scope within the helm-charts repository."
 inputs:
-  # context:
-  #   description: "Path to the helm directory."
-  #   required: true
-  #   default: "./helm"
-  scope:
-    description: "Comma-separated list of scopes to update."
+  context:
+    description: "Path to the helm directory."
     required: true
+    default: "./helm"
+  # scope:
+  #   description: "Comma-separated list of scopes to update."
+  #   required: true
   # type:
   #   description: "Artifact's type."
   #   required: false
