@@ -12,6 +12,11 @@ inputs:
     description: "Path to the helm directory."
     required: true
     default: "./helm"
+outputs:
+  chart:
+    description: "Name of the Helm chart."
+  ver:
+    description: "Version of the Helm chart."
 runs:
   using: "composite"
   steps:
@@ -23,9 +28,36 @@ runs:
       with:
         repository: ${{ inputs.repository }}
 
-    - name: Set Execute Permission
-      run: chmod +x hello.sh
+    - name: Setup Helm
+      uses: azure/setup-helm@v3.5
+      with:
+        version: "v3.12.0"
 
-    - name: Run Hello Script
-      run: ./hello.sh
+    - name: Get chart's name
+      id: set-chart-name
+      run: |
+        CHART=$(grep '^name:' Chart.yaml | awk '{print $2}')
+        echo "chart=$CHART" >> $GITHUB_OUTPUT
+      working-directory: ${{ inputs.context }}
+      shell: bash
 
+    - name: Get chart's version
+      id: set-chart-version
+      run: |
+        VER=$(grep '^version:' Chart.yaml | awk '{print $2}')
+        echo "ver=$VER" >> $GITHUB_OUTPUT
+      working-directory: ${{ inputs.context }}
+      shell: bash
+
+    - name: Package chart into tgz file
+      run: |
+        helm package . --dependency-update
+      working-directory: ${{ inputs.context }}
+      shell: bash
+
+    - name: Publish chart to ACR
+      run: |
+        helm push ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz \
+          oci://${{ inputs.registry }}/helm/${{ inputs.scope }}
+      working-directory: ${{ inputs.context }}
+      shell: bash
