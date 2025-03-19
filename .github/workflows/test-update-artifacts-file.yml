@@ -21,4 +21,4 @@ jobs:
         with:
           context: actions/update-artifacts-file
           scope: infra
-          repository: MapColonies/actions
+          repository: ${{ env.action_repo }}
