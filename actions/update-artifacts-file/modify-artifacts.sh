@@ -1,7 +1,6 @@
-# Split the scope input by commas and iterate over each element
-echo "hello"
-pwd
-ls
+#!/bin/bash
+echo "Hello, World!"
+
 
 # echo "${{ inputs.scope }}" | tr ',' '\n' | while read -r element; do
 #     # Navigate to the specific scope directory
