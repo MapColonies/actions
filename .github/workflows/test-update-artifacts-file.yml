@@ -22,3 +22,5 @@ jobs:
           context: actions/update-artifacts-file
           scope: infra
           repository: ${{ env.action_repo }}
+          artifact-name: "sftpgo"
+          artifact-tag: "latest"
