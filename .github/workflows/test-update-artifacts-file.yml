@@ -41,14 +41,19 @@ jobs:
   update-artifacts-json:
     runs-on: ubuntu-latest
     steps:
+      # - name: Update artifacts.json
+      #   uses: ./actions/update-artifacts-file
+      #   with:
+      #     # scope: ${{ github.event.inputs.scope }}
+      #     # type: ${{ github.event.inputs.type }}
+      #     # artifact-name: ${{ github.event.inputs['artifact-name'] }}
+      #     # artifact-tag: ${{ github.event.inputs['artifact-tag'] }}
+      #     # token: ${{ secrets.GH_PAT }}
+      #     repository: MapColonies/actions
+      #     # registry: ${{ secrets.ACR_URL }}
+      #     # context: .github/workflows/infra
       - name: Update artifacts.json
         uses: ./actions/update-artifacts-file
         with:
-          # scope: ${{ github.event.inputs.scope }}
-          # type: ${{ github.event.inputs.type }}
-          # artifact-name: ${{ github.event.inputs['artifact-name'] }}
-          # artifact-tag: ${{ github.event.inputs['artifact-tag'] }}
-          # token: ${{ secrets.GH_PAT }}
+          context: actions/update-artifacts-file
           repository: MapColonies/actions
-          # registry: ${{ secrets.ACR_URL }}
-          # context: .github/workflows/infra

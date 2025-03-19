@@ -5,9 +5,9 @@ inputs:
   #   description: "Path to the helm directory."
   #   required: true
   #   default: "./helm"
-  # scope:
-  #   description: "Comma-separated list of scopes to update."
-  #   required: true
+  scope:
+    description: "Comma-separated list of scopes to update."
+    required: true
   # type:
   #   description: "Artifact's type."
   #   required: false
@@ -39,7 +39,7 @@ runs:
       with:
         repository: ${{ env.action_repo }}
         ref: ${{ env.action_ref }}
-        path: _shared-workflows-update-artifacts-file
+        path: ${{ inputs.scope }}
 
     # - name: Checkout helm-charts repository
     #   uses: actions/checkout@v4
