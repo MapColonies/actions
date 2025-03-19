@@ -22,4 +22,4 @@ echo "${{ inputs.scope }}" #| tr ',' '\n' | while read -r element; do
   # "
   # # go back to before pushd
   # popd
-done
+# done
