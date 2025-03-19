@@ -24,8 +24,8 @@ runs:
         repository: ${{ inputs.repository }}
         path: ${{ inputs.context }}
 
-    - name: pwd
-      run: pwd
+    - name: ls
+      run: ls -la
       shell: bash
 
     - name: Set Execute Permission
