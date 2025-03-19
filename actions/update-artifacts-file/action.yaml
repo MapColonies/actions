@@ -26,6 +26,7 @@ runs:
 
     - name: pwd
       run: pwd
+      shell: bash
 
     # - name: Set Execute Permission
     #   run: chmod +x hello.sh
