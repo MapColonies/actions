@@ -28,7 +28,7 @@ runs:
       shell: bash
 
     - name: Set Execute Permission
-      run: chmod +x update-artifacts-file/hello.sh
+      run: chmod +x ./hello.sh
       shell: bash
       working-directory: ${{ inputs.context }}
 
