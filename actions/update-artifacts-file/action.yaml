@@ -29,7 +29,7 @@ runs:
       shell: bash
 
     - name: Set Execute Permission
-      run: chmod +x hello.sh
+      run: chmod +x update-artifacts-file/hello.sh
       shell: bash
 
     - name: Run Hello Script
