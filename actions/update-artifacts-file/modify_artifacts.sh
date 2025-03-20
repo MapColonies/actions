@@ -24,7 +24,7 @@ echo "$SCOPE" | tr ',' '\n' | while read -r element; do
     fs.writeFileSync(path, JSON.stringify(data, null, 2));
     "
     # go back to before pushd
-    popd
+    # popd
   else
     echo "Directory $REPOSITORY/$element does not exist"
   fi
