@@ -24,4 +24,4 @@ jobs:
           repository: ${{ env.action_repo }}
           artifact-name: "sftpgo"
           artifact-tag: "latest"
-          registry: ${{ secrets.ACR_URL }}
+          registry: "acrarolibotnonprod.azurecr.io""
