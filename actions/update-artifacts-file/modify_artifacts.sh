@@ -6,7 +6,7 @@ echo "$SCOPE" | tr ',' '\n' | while read -r element; do
   # Check if the directory exists
   if [ -d "$element" ]; then
     echo "Changing directory to $REPOSITORY/$element"
-    pushd "$REPOSITORY/$element"
+    pushd "$element"
     node -e "
     const fs = require('fs');
     const path = './artifacts.json';

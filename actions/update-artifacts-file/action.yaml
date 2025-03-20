@@ -36,10 +36,6 @@ runs:
       with:
         repository: ${{ inputs.repository }}
 
-    - name: ls
-      run: ls -la
-      shell: bash
-
     - name: Set Execute Permission
       run: chmod +x ./modify_artifacts.sh
       shell: bash
