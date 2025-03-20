@@ -2,7 +2,7 @@
 # Split string by comma
 echo "$SCOPE" | tr ',' '\n' | while read -r element; do
   # cd to directory
-  pushd helm-charts/$element
+  pushd $REPOSITORY/$element
   node -e "
   const fs = require('fs');
   const path = './artifacts.json';
