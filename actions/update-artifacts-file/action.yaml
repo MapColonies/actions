@@ -58,7 +58,7 @@ runs:
       working-directory: ${{ inputs.context }}
 
     - name: Run commit changes script
-      run: ../../${{ inputs.context }}/commit-changes.sh
+      run: ${{ inputs.context }}/commit-changes.sh
       shell: bash
       env:
         SCOPE: ${{ inputs.scope }}
