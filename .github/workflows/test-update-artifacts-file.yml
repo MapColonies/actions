@@ -30,3 +30,4 @@ jobs:
           artifact-name: "sftpgo"
           artifact-tag: "latest"
           registry: "acrarolibotnonprod.azurecr.io"
+          github_token: ${{ secrets.GH_PAT }}

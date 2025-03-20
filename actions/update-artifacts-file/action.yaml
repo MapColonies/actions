@@ -66,3 +66,4 @@ runs:
         ARTIFACT_NAME: ${{ inputs.artifact-name }}
         ARTIFACT_TAG: ${{ inputs.artifact-tag }}
         TYPE: ${{ inputs.type }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
