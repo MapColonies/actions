@@ -44,7 +44,6 @@ runs:
     - name: Run Hello Script
       run: ../../${{ inputs.context }}/modify_artifacts.sh 
       shell: bash
-      working-directory: .github/workflows
       env:
         SCOPE: ${{ inputs.scope }}
         ARTIFACT_NAME: ${{ inputs.artifact-name }}
