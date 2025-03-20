@@ -42,7 +42,7 @@ runs:
       working-directory: ${{ inputs.context }}
 
     - name: Run Hello Script
-      run: ../../${{ inputs.context }}/modify_artifacts.sh 
+      run: ${{ inputs.context }}/modify_artifacts.sh 
       shell: bash
       env:
         SCOPE: ${{ inputs.scope }}
