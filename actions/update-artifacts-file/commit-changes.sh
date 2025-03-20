@@ -10,7 +10,7 @@ git commit -m "chore: update artifacts.json for $SCOPE" -m "with $TYPE artifact:
 success=false
 for ((i=1; i<=5; i++)); do
   echo "Attempt number $i"
-  if git push; then
+  if GIT_ASKPASS=echo git push https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git; then
     success=true
     break
   else
