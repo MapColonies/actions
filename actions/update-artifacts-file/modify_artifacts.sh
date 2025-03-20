@@ -1,5 +1,7 @@
 #!/bin/bash
 # Split string by comma
+pwd
+ls -la
 echo "$SCOPE" | tr ',' '\n' | while read -r element; do
   # Check if the directory exists
   if [ -d "$REPOSITORY/$element" ]; then
