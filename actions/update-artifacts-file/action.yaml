@@ -60,7 +60,6 @@ runs:
     - name: Run commit changes script
       run: ../../${{ inputs.context }}/commit-changes.sh
       shell: bash
-      working-directory: .github/workflows
       env:
         SCOPE: ${{ inputs.scope }}
         ARTIFACT_NAME: ${{ inputs.artifact-name }}
