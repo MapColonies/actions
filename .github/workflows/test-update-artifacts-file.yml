@@ -8,6 +8,11 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+  id-token: write
+  workflows: write
+
 jobs:
   update-artifacts-json:
     runs-on: ubuntu-latest
