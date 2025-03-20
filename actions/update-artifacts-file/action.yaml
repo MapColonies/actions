@@ -55,7 +55,6 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact-tag }}
         TYPE: ${{ inputs.type }}
         REGISTRY: ${{ inputs.registry }}
-        REPOSITORY: ${{ inputs.repository }}/.github/workflows
 
     - name: Set commit Permission
       run: chmod +x ./commit-changes.sh

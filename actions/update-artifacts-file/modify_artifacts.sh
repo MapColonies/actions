@@ -4,7 +4,7 @@ pwd
 ls -la
 echo "$SCOPE" | tr ',' '\n' | while read -r element; do
   # Check if the directory exists
-  if [ -d "$REPOSITORY/$element" ]; then
+  if [ -d "$element" ]; then
     echo "Changing directory to $REPOSITORY/$element"
     pushd "$REPOSITORY/$element"
     node -e "
