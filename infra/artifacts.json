@@ -20,7 +20,8 @@
       "infra/auth-cron": "v1.2.0",
       "infra/skopeo-with-tools/stable": "v1.15.0",
       "openpolicyagent/opa": "0.53.0-envoy-3",
-      "elastic-alertmanager-connector": "v1.0.0"
+      "elastic-alertmanager-connector": "v1.0.0",
+      "infra/sftpgo": "latest"
     },
     "docker.io": {
       "bitnami/postgresql": "17.0.0-debian-12-r1",
@@ -45,4 +46,3 @@
     "MapColonies/helm-charts"
   ]
 }
-  
