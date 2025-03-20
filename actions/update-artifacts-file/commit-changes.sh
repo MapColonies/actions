@@ -4,7 +4,7 @@ git config --global user.name "mapcolonies[bot]"
 git config --global user.email "devops[bot]@mapcolonies.com"
 
 git add .
-# Add "|| true" for not failing on this line
+# Add "|| true" for not failing on this line 
 git commit -m "chore: update artifacts.json for $SCOPE" -m "with $TYPE artifact: $ARTIFACT_NAME:$ARTIFACT_TAG" || true
 
 success=false
