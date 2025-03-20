@@ -1,7 +1,7 @@
 #!/bin/bash
 # Split string by comma
-pwd
-ls -la
+echo $REGISTRY
+
 echo "$SCOPE" | tr ',' '\n' | while read -r element; do
   # Check if the directory exists
   if [ -d "$element" ]; then
