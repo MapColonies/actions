@@ -20,7 +20,7 @@ jobs:
         uses: ./actions/update-artifacts-file
         with:
           context: actions/update-artifacts-file
-          scope: infra
+          scope: '~/work/shared-workflows/shared-workflows/helm-charts/infra'
           repository: ${{ env.action_repo }}
           artifact-name: "sftpgo"
           artifact-tag: "latest"
