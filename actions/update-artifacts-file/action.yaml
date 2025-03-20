@@ -54,7 +54,7 @@ runs:
         ARTIFACT_NAME: ${{ inputs.artifact-name }}
         ARTIFACT_TAG: ${{ inputs.artifact-tag }}
         TYPE: ${{ inputs.type }}
-        REGISTRY: ${{ inputs.registry }}
+        REGISTRY: "acrarolibotnonprod.azurecr.io"
 
     - name: Set commit Permission
       run: chmod +x ./commit-changes.sh
