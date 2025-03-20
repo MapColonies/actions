@@ -28,6 +28,6 @@ jobs:
           scope: infra
           repository: ${{ env.action_repo }}
           artifact-name: "sftpgo"
-          artifact-tag: "latest"
+          artifact-tag: "michal"
           registry: "acrarolibotnonprod.azurecr.io"
           github_token: ${{ secrets.GH_PAT }}
