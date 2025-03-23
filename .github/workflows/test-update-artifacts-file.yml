@@ -4,10 +4,6 @@ on:
   workflow_dispatch:
   workflow_call:
 
-  push:
-    branches:
-      - master
-
 permissions:
   contents: write
   id-token: write
