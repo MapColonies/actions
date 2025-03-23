@@ -36,7 +36,7 @@ runs:
 
     - name: Debugging
       run: |
-        pwd
+        cd ${{ inputs.chartDirs }}
       shell: bash
 
     - name: Run chart-testing (list-changed)
