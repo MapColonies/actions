@@ -1,0 +1,26 @@
+name: Publish npm Package
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches:
+      - main
+    inputs:
+      node-version:
+        description: 'Node.js version to use'
+        required: true
+        default: '20'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Publish Package
+        uses: ./actions/publish-npm
+        with:
+          node-version: ${{ inputs.node-version }}
+          npm-token: ${{ secrets.NPM_TOKEN }}
