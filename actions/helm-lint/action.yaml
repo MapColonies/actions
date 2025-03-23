@@ -48,6 +48,11 @@ runs:
         echo "Changed: ${{ steps.list-changed.outputs.changed }}"
       shell: bash
 
+    - name: Debugging 2
+      run: |
+        echo "Changed: ${{ inputs.chartDirs }}"
+      shell: bash
+
     - name: Run chart-testing (lint)
       if: steps.list-changed.outputs.changed == 'true'
       run: ct lint --chart-dirs "${{ inputs.chartDirs }}" --target-branch "${{ github.event.repository.default_branch }}"
