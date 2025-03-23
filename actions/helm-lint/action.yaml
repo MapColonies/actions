@@ -55,7 +55,7 @@ runs:
 
     - name: Debugging 2
       run: |
-        echo "Changed: ${{ inputs.chartDirs }}"
+        ct lint --chart-dirs "${{ inputs.chartDirs }}" 
       shell: bash
 
     - name: Run chart-testing (lint)
