@@ -55,7 +55,7 @@ runs:
 
     - name: Debugging 2
       run: |
-        helm lint --chart-dirs "${{ inputs.chartDirs }}" 
+        helm lint "${{ inputs.chartDirs }}" 
       shell: bash
 
     - name: Run chart-testing (lint)
