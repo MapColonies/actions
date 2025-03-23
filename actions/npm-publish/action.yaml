@@ -37,7 +37,6 @@ runs:
       shell: bash
 
     - name: Publish package to npm
-      run: npm publish --access public
-      shell: bash
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs['npm-token'] }}
+      uses: JS-DevTools/npm-publish@v3
+      with:
+        token: ${{ inputs['npm-token'] }}
