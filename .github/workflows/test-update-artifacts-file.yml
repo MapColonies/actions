@@ -23,6 +23,6 @@ jobs:
           scope: infra
           repository: ${{ env.action_repo }}
           artifact-name: "sftpgo"
-          artifact-tag: "v2.0.0"
+          artifact-tag: "v2.0.1"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
