@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: hello-world-image
-  pullPolicy: IfNotPresent
+  pullPolicy: not
 
 nameOverride: ""
 fullnameOverride: ""
