@@ -23,5 +23,5 @@ jobs:
         uses: ./actions/helm-lint
         with:
           repository: ${{ github.repository }}
-          chartDirs: "infra"
+          chartDirs: "infra/test-helm"
 
