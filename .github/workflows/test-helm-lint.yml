@@ -9,7 +9,7 @@ permissions:
   id-token: write
 
 jobs:
-  update-artifacts-json:
+  test-helm-lint:
     runs-on: ubuntu-latest
     steps:
 
