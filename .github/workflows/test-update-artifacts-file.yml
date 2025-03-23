@@ -29,5 +29,5 @@ jobs:
           repository: ${{ env.action_repo }}
           artifact-name: "sftpgo"
           artifact-tag: "michal"
-          registry: "acrarolibotnonprod.azurecr.io"
+          registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
