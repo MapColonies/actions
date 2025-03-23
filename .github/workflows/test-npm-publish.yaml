@@ -20,7 +20,7 @@ jobs:
       packages: write
     steps:
       - name: Publish Package
-        uses: ./actions/publish-npm
+        uses: ./actions/npm-publish
         with:
           node-version: ${{ inputs.node-version }}
           npm-token: ${{ secrets.NPM_TOKEN }}
