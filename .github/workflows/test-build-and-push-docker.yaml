@@ -22,7 +22,7 @@ jobs:
       - name: Build Docker Image
         uses: ./actions/build-and-push-docker
         with:
-          context: .github/workflows
+          context: .
           scope: infra
           repository: MapColonies/actions
           registry: ${{ secrets.ACR_URL }}
