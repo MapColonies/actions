@@ -22,7 +22,7 @@ jobs:
       - name: Build Helm Chart
         uses: ./actions/build-and-push-helm
         with:
-          context: .github/workflows/helm
+          context: ./helm
           scope: infra
           repository: MapColonies/actions
           registry: ${{ secrets.ACR_URL }}
