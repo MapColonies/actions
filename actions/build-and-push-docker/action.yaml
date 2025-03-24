@@ -38,7 +38,7 @@ runs:
         echo "DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME,,}" >> $GITHUB_ENV
       shell: bash
 
-    - name: Build docker image
+    - name: Build the docker image
       run: docker build ${{ inputs.context }} -t ${{ env.DOCKER_IMAGE_NAME }}
       shell: bash
 
