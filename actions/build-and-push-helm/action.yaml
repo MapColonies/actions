@@ -7,7 +7,7 @@ inputs:
     default: ""
   repository:
     description: "Repository for the Helm Chart."
-    required: false
+    required: true
   context:
     description: "Path to the helm directory."
     required: true
@@ -29,7 +29,7 @@ runs:
         repository: ${{ inputs.repository }}
 
     - name: Setup Helm
-      uses: azure/setup-helm@v3.5
+      uses: azure/setup-helm@5119fcb9089d432beecbf79bb2c7915207344b78 # v3.5
       with:
         version: "v3.12.0"
 

@@ -6,7 +6,7 @@ inputs:
     required: true
   repository:
     description: "Repository for the Docker image."
-    required: false
+    required: true
   scope:
     description: "Scope or namespace for the Docker image."
     required: true

@@ -24,7 +24,7 @@ runs:
         repository: ${{ inputs.repository }}
 
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
       with:
         node-version: ${{ inputs['node-version'] }}
 
@@ -37,6 +37,6 @@ runs:
       shell: bash
 
     - name: Publish package to npm
-      uses: JS-DevTools/npm-publish@v3
+      uses: JS-DevTools/npm-publish@4b07b26a2f6e0a51846e1870223e545bae91c552 #v3
       with:
         token: ${{ inputs['npm-token'] }}
