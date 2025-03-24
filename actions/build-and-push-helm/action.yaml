@@ -41,7 +41,7 @@ runs:
       working-directory: ${{ inputs.context }}
       shell: bash
 
-    - name: Get chart's version
+    - name: Get the chart's version
       id: set-chart-version
       run: |
         VER=$(grep '^version:' Chart.yaml | awk '{print $2}')
