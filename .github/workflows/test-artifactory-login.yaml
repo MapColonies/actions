@@ -22,4 +22,3 @@ jobs:
           registry: ${{ secrets.ACR_URL }}
           username: ${{ secrets.ACR_PUSH_USER }}
           password: ${{ secrets.ACR_PUSH_TOKEN }}
-

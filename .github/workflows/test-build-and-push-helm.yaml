@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.ACR_PUSH_USER }}
           password: ${{ secrets.ACR_PUSH_TOKEN }}
 
-      - name: Build Helm Chart
+      - name: Test Build Helm Chart
         uses: ./actions/build-and-push-helm
         with:
           context: ./infra/test-helm
