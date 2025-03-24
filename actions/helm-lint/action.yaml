@@ -1,5 +1,5 @@
 name: "Lint and Test Helm Charts"
-description: "A composite action to lint and test Helm charts using chart-testing and kind."
+description: "An action to lint and test Helm charts using chart-testing and kind."
 inputs:
   chartDirs:
     description: "Comma-separated list of root directories containing Helm charts."
