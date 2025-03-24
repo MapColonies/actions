@@ -1,5 +1,5 @@
 name: 'Publish npm Package'
-description: 'Installs dependencies, runs prepack, and publishes the package to npm.'
+description: 'Installs dependencies, runs prepack, and publishes the package to npm'
 inputs:
   node-version:
     description: 'Node.js version to use'
