@@ -50,7 +50,7 @@
         "type": "refactor"
       }
     ],
-    "draft-pull-request": true,
+    "draft-pull-request": false,
     "include-v-in-tag": true,
     "separate-pull-requests": true,
     "packages": {
