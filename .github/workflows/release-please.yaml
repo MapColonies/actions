@@ -16,7 +16,3 @@ jobs:
       - uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GH_PAT }}
-          # this is a built-in strategy in release-please, see "Action Inputs"
-          # for more options
-          # release-type: simple
-          # config-file: release-please-config.json
