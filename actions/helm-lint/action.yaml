@@ -47,6 +47,9 @@ runs:
       run: pwd
       shell: bash
 
+    - name: ls
+      run: ls
+      shell: bash
 
     - name: Run chart-testing (lint)
       # if: steps.list-changed.outputs.changed == 'true'
