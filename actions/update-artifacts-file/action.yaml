@@ -41,7 +41,7 @@ runs:
       shell: bash
       working-directory: ${{ inputs.context }}
 
-    - name: Run Hello Script
+    - name: Run modify artifacts Script
       run: ${{ inputs.context }}/modify_artifacts.sh 
       shell: bash
       env:
