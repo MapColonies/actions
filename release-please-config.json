@@ -52,32 +52,38 @@
     ],
     "draft-pull-request": true,
     "include-v-in-tag": true,
+    "separate-pull-requests": true,
     "packages": {
       "actions/artifactory-login": {
+        "release-type": "simple",
         "package-name": "artifactory-login",
         "extra-files": ["README.md"]
       },
       "actions/build-and-push-docker": {
+        "release-type": "simple",
         "package-name": "build-and-push-docker",
         "extra-files": ["README.md"]
       },
       "actions/build-and-push-helm": {
+        "release-type": "simple",
         "package-name": "build-and-push-helm",
         "extra-files": ["README.md"]
       },
       "actions/helm-lint": {
+        "release-type": "simple",
         "package-name": "helm-lint",
         "extra-files": ["README.md"]
       },
       "actions/npm-publish": {
+        "release-type": "simple",
         "package-name": "npm-publish",
         "extra-files": ["README.md"]
       },
       "actions/update-artifacts-file": {
+        "release-type": "simple",
         "package-name": "update-artifacts-file",
         "extra-files": ["README.md"]
       }
-    },
-    "release-type": "simple",
-    "separate-pull-requests": true
-  }
+    }
+}
+  
