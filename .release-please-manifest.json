@@ -1,7 +1,7 @@
 {
     "actions/artifactory-login": "1.1.0",
     "actions/build-and-push-docker": "1.1.0",
-    "actions/build-and-push-helm": "1.0.0",
+    "actions/build-and-push-helm": "1.1.0",
     "actions/helm-lint": "1.1.0",
     "actions/npm-publish": "1.0.0",
     "actions/update-artifacts-file": "1.1.0"
