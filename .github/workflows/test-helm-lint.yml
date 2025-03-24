@@ -3,6 +3,9 @@ name: Helm Lint repository
 on:
   workflow_dispatch:
   workflow_call:
+  push:
+    branches:
+      - master
 
 permissions:
   contents: write
