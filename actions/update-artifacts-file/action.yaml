@@ -7,7 +7,7 @@ inputs:
     default: ""
   repository:
     description: "Repository for the Helm Chart."
-    required: false
+    required: true
   context:
     description: "Path to the helm directory."
     required: true
@@ -15,7 +15,7 @@ inputs:
   type:
     description: "Artifact`s type"
     type: string
-    required: false
+    required: true
     default: "docker"
   artifact-name:
     description: "Artifact`s name"
@@ -24,6 +24,12 @@ inputs:
   artifact-tag:
     description: "Artifact`s tag"
     type: string
+    required: true
+  registry:
+    description: "Registry to push the artifact."
+    required: true
+  github_token:
+    description: "GitHub token."
     required: true
 runs:
   using: "composite"
@@ -49,7 +55,7 @@ runs:
         ARTIFACT_NAME: ${{ inputs.artifact-name }}
         ARTIFACT_TAG: ${{ inputs.artifact-tag }}
         TYPE: ${{ inputs.type }}
-        REGISTRY: "acrarolibotnonprod.azurecr.io"
+        REGISTRY: ${{ inputs.registry }}
 
     - name: Set commit Permission
       run: chmod +x ./commit-changes.sh

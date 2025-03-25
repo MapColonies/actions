@@ -22,6 +22,7 @@ jobs:
       - name: Update artifacts.json
         uses: ./actions/update-artifacts-file
         with:
+          type: "docker"
           context: actions/update-artifacts-file
           scope: infra
           repository: ${{ env.action_repo }}
