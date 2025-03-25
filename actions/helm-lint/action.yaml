@@ -40,7 +40,7 @@ runs:
     - name: Run chart-testing (list-changed)
       id: list-changed
       run: |
-        changed=$(ct list-changed --chart-dirs "${{ inputs.chartDirs }}" --target-branch "${{ github.event.repository.default_branch }}")
+        changed=$(ct list-changed --chart-dirs "${{ inputs.chartDirs }}" --target-branch "${{ github.ref_name }}")
         if [[ -n "$changed" ]]; then
           echo "changed=true" >> "$GITHUB_OUTPUT"
         fi
@@ -48,7 +48,7 @@ runs:
 
     - name: Run chart-testing (lint)
       if: steps.list-changed.outputs.changed == 'true'
-      run: ct lint --chart-dirs "${{ inputs.chartDirs }}" --target-branch "${{ github.event.repository.default_branch }}"
+      run: ct lint --chart-dirs "${{ inputs.chartDirs }}" --target-branch "${{ github.ref_name }}"
       shell: bash
 
     - name: Create kind cluster
@@ -57,5 +57,5 @@ runs:
 
     - name: Run chart-testing (install)
       if: steps.list-changed.outputs.changed == 'true'
-      run: ct install --chart-dirs "${{ inputs.chartDirs }}" --target-branch "${{ github.event.repository.default_branch }}"
+      run: ct install --chart-dirs "${{ inputs.chartDirs }}" --target-branch "${{ github.ref_name }}"
       shell: bash
