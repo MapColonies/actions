@@ -8,9 +8,6 @@ on:
       - master
     paths:
       - "actions/update-artifacts-file/**"
-  pull_request:
-    paths:
-      - "actions/update-artifacts-file/**"
 
 jobs:
   update-artifacts-json:

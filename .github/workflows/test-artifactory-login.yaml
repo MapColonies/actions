@@ -8,9 +8,6 @@ on:
       - master
     paths:
       - "actions/artifactory-login/**"
-  pull_request:
-    paths:
-      - "actions/artifactory-login/**"
 
 jobs:
   test-artifactory-login:

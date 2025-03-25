@@ -8,9 +8,6 @@ on:
       - master
     paths:
       - "actions/build-and-push-docker/**"
-  pull_request:
-    paths:
-      - "actions/build-and-push-docker/**"
 
 jobs:
   test-build-and-push:

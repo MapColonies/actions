@@ -8,9 +8,6 @@ on:
       - master
     paths:
       - "actions/helm-lint/**"
-  pull_request:
-    paths:
-      - "actions/helm-lint/**"
 
 jobs:
   test-helm-lint:

@@ -8,9 +8,6 @@ on:
       - master
     paths:
       - "actions/build-and-push-helm/**"
-  pull_request:
-    paths:
-      - "actions/build-and-push-helm/**"
 
 jobs:
   test-build-and-push:
