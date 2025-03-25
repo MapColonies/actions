@@ -12,11 +12,6 @@ on:
     paths:
       - "actions/update-artifacts-file/**"
 
-permissions:
-  contents: write
-  id-token: write
-  actions: write
-
 jobs:
   update-artifacts-json:
     runs-on: ubuntu-latest
