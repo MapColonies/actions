@@ -3,6 +3,14 @@ name: Publish npm Package
 on:
   workflow_dispatch:
   workflow_call:
+  push:
+    branches:
+      - master
+    paths:
+      - "actions/npm-publish/**"
+  pull_request:
+    paths:
+      - "actions/npm-publish/**"
 
 jobs:
   publish:

@@ -3,6 +3,14 @@ name: Update artifacts.json
 on:
   workflow_dispatch:
   workflow_call:
+  push:
+    branches:
+      - master
+    paths:
+      - "actions/update-artifacts-file/**"
+  pull_request:
+    paths:
+      - "actions/update-artifacts-file/**"
 
 permissions:
   contents: write

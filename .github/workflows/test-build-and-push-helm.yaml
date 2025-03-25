@@ -3,6 +3,14 @@ name: Test Build and Push Helm Chart
 on:
   workflow_dispatch:
   workflow_call:
+  push:
+    branches:
+      - master
+    paths:
+      - "actions/build-and-push-helm/**"
+  pull_request:
+    paths:
+      - "actions/build-and-push-helm/**"
 
 jobs:
   test-build-and-push:

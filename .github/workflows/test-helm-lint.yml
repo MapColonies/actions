@@ -3,6 +3,14 @@ name: Helm Lint repository
 on:
   workflow_dispatch:
   workflow_call:
+  push:
+    branches:
+      - master
+    paths:
+      - "actions/helm-lint/**"
+  pull_request:
+    paths:
+      - "actions/helm-lint/**"
 
 permissions:
   contents: write
