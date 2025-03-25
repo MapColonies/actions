@@ -5,6 +5,9 @@ inputs:
     description: "Comma-separated list of root directories containing Helm charts."
     required: true
     default: "."
+  repository:
+    description: "Repository for the Helm Chart."
+    required: true
 outputs:
   changed: 
     description: "Indicates if there are changed charts."

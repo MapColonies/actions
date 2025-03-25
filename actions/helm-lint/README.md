@@ -10,6 +10,7 @@ It detects which charts have changed and only tests those.
 | Name         | Description                                                  | Required | Default |
 |--------------|--------------------------------------------------------------|----------|---------|
 | `chartDirs`  | Comma-separated list of root directories with Helm charts.   | ✅ Yes     | `.`     |
+| `repository` | The full GitHub repository (e.g. `MapColonies/helm-charts`) containing the Helm chart | ✅ Yes   |     |
 
 ## 📤 Outputs
 
@@ -24,4 +25,5 @@ It detects which charts have changed and only tests those.
   uses: MapColonies/shared-workflows/actions/helm-lint@helm-lint-v1
   with:
     chartDirs: infra/monitoring,infra/sftpgo
+    repository: ${{ github.repository }}
 ```
