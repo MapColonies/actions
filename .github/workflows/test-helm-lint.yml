@@ -12,10 +12,6 @@ on:
     paths:
       - "actions/helm-lint/**"
 
-permissions:
-  contents: write
-  id-token: write
-
 jobs:
   test-helm-lint:
     runs-on: ubuntu-latest
