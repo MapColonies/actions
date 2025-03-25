@@ -12,9 +12,6 @@ on:
     paths:
       - "actions/artifactory-login/**"
 
-permissions:
-  contents: read
-
 jobs:
   test-artifactory-login:
     runs-on: ubuntu-latest
