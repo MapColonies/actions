@@ -4,9 +4,6 @@ inputs:
   context:
     description: "Path to the Docker build context."
     required: true
-  # repository:
-  #   description: "Repository for the Docker image."
-  #   required: true
   scope:
     description: "Scope or namespace for the Docker image."
     required: true
