@@ -29,5 +29,5 @@ jobs:
         with:
           context: .
           scope: infra
-          repository: MapColonies/actions
+          # repository: MapColonies/actions
           registry: ${{ secrets.ACR_URL }}
