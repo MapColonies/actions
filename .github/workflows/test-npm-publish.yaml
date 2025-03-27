@@ -8,9 +8,6 @@ on:
       - master
     paths:
       - "actions/npm-publish/**"
-  pull_request:
-    paths:
-      - "actions/npm-publish/**"
 
 jobs:
   publish:
@@ -27,3 +24,4 @@ jobs:
         with:
           node-version: ${{ inputs.node-version }}
           npm-token: ${{ secrets.NPM_TOKEN }}
+          repository: ${{ github.repository }}

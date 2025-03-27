@@ -8,9 +8,6 @@ on:
       - master
     paths:
       - "actions/build-and-push-docker/**"
-  pull_request:
-    paths:
-      - "actions/build-and-push-docker/**"
 
 jobs:
   test-build-and-push:
@@ -32,5 +29,4 @@ jobs:
         with:
           context: .
           scope: infra
-          repository: MapColonies/actions
           registry: ${{ secrets.ACR_URL }}

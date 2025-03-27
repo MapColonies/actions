@@ -6,8 +6,7 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
 
 | Name         | Description                                                      | Required | Default     |
 |--------------|------------------------------------------------------------------|----------|-------------|
-| `scope`      | Scope or namespace within the registry (e.g. `team` or `project`) | ✅ Yes   | `""`        |
-| `repository` | The full GitHub repository (e.g. `MapColonies/helm-charts`) containing the Helm chart | ✅ Yes   |             |
+| `scope`      | Scope or namespace within the registry (e.g. `team` or `project`) | ✅ Yes   | 
 | `context`    | Relative path to the Helm chart directory                        | ✅ Yes   | `./helm`    |
 | `registry`   | OCI registry URL to push the chart to                            | ✅ Yes   |             |
 
@@ -34,5 +33,4 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
     context: ./infra/monitoring
     scope: infra
     registry: ${{ secrets.ACR_URL }}
-    repository: MapColonies/helm-charts
 ```
