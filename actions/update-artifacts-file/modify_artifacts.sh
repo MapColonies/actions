@@ -20,7 +20,8 @@
 #!/bin/bash
 set -e
 
-ARTIFACTS_FILE="$SCOPE/artifacts.json"
+DIR="$CONTEXT/$SCOPE"
+ARTIFACTS_FILE="$DIR/artifacts.json"
 
 if [ -d "$DIR" ]; then
   echo "📦 Updating $ARTIFACTS_FILE"
