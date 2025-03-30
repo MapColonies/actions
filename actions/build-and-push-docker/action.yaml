@@ -4,34 +4,27 @@ inputs:
   context:
     description: "Path to the Docker build context."
     required: true
+  repository:
+    description: "Repository name for the Docker image (defaults to current GitHub repository)."
+    required: false
+    default: ${{ github.repository }}
   scope:
     description: "Scope or namespace for the Docker image."
     required: true
   registry:
-    description: |
-      Azure Registry to authenticate against.
+    description: Azure Registry to authenticate against.
     required: true
 runs:
   using: "composite"
   steps:
-    - name: Checkout shared workflows
-      env:
-        action_repo: ${{ github.action_repository }}
-        action_ref: ${{ github.action_ref }}
+    - name: Checkout code
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      with:
-        repository: ${{ env.action_repo }}
-        ref: ${{ env.action_ref }}
-        path: _shared-workflows-build-and-push-docker
 
-    - name: Setup docker image name and downcase it
-      id: setup_image_name
+    - name: Setup docker image name
+      id: setup-image-name
       run: |
-        if [[ -z "${{ github.event.repository.name }}" ]]; then
-          DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.scope }}/${{ github.event.repository.name }}:${{ github.ref_name }}"
-        else
-          DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ github.event.repository.name }}:${{ github.ref_name }}"
-        fi
+        IMAGE_TAG="${{ github.ref_name }}"
+        DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.scope }}/${{ inputs.repository.name }}:${IMAGE_TAG}"
         echo "DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME,,}" >> $GITHUB_ENV
       shell: bash
 
