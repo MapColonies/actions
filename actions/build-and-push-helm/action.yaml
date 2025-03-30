@@ -33,7 +33,6 @@ runs:
         version: "v3.12.0"
 
     - name: Get chart's name
-      id: set-chart-name
       run: |
         CHART=$(grep '^name:' Chart.yaml | awk '{print $2}')
         echo "chart=$CHART" >> $GITHUB_OUTPUT
@@ -41,7 +40,6 @@ runs:
       shell: bash
 
     - name: Get the chart's version
-      id: set-chart-version
       run: |
         VER=$(grep '^version:' Chart.yaml | awk '{print $2}')
         echo "ver=$VER" >> $GITHUB_OUTPUT
