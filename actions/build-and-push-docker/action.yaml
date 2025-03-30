@@ -24,7 +24,8 @@ runs:
       id: setup-image-name
       run: |
         IMAGE_TAG="${{ github.ref_name }}"
-        DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.scope }}/${{ inputs.repository.name }}:${IMAGE_TAG}"
+        REPO_NAME=$(basename "${{ inputs.repository }}")
+        DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.scope }}/${REPO_NAME}:${IMAGE_TAG}"
         echo "DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME,,}" >> $GITHUB_ENV
       shell: bash
 
