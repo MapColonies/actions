@@ -13,6 +13,9 @@ inputs:
     description: "Path to the helm directory."
     required: true
     default: "./helm"
+  registry:
+    description: "Azure Registry to authenticate against."
+    required: true
 outputs:
   chart:
     description: "Name of the Helm chart."
