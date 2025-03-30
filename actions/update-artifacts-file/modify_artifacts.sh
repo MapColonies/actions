@@ -1,3 +1,20 @@
+#!/bin/bash
+# Split string by comma
+  # Check if the directory exists
+if [ -d "$SCOPE" ]; then
+  path="$SCOPE/artifacts.json"
+  # Create a default empty JSON if the file doesn't exist
+  [[ -f "$path" ]] || echo '{}' > "$path"
+  # Ensure nested structure and assign artifact tag
+  jq --arg type "$TYPE" \
+    --arg registry "$REGISTRY" \
+    --arg key "${element}/$ARTIFACT_NAME" \
+    --arg tag "$ARTIFACT_TAG" \
+    '.[$type][$registry][$key] = $tag' "$path" > tmp.json && mv tmp.json "$path"
+else
+  echo "Directory $REPOSITORY/$SCOPE does not exist"
+fi
+
 # #!/bin/bash
 # # Split string by comma
 # echo "$SCOPE" | tr ',' '\n' | while read -r element; do
@@ -17,30 +34,32 @@
 #   fi
 # done
 
-#!/bin/bash
-set -e
 
-DIR="$CONTEXT/$SCOPE"
-ARTIFACTS_FILE="$DIR/artifacts.json"
 
-if [ -d "$DIR" ]; then
-  echo "📦 Updating $ARTIFACTS_FILE"
+# #!/bin/bash
+# set -e
 
-  # Create file if it doesn't exist
-  [[ -f "$ARTIFACTS_FILE" ]] || echo '{}' > "$ARTIFACTS_FILE"
+# DIR="$CONTEXT/$SCOPE"
+# ARTIFACTS_FILE="$DIR/artifacts.json"
 
-  # Use jq to update the artifact entry
-  jq --arg type "$TYPE" \
-     --arg registry "$REGISTRY" \
-     --arg key "$SCOPE/$ARTIFACT_NAME" \
-     --arg tag "$ARTIFACT_TAG" \
-     '
-     .[$type] |= . // {} |
-     .[$type][$registry] |= . // {} |
-     .[$type][$registry][$key] = $tag
-     ' "$ARTIFACTS_FILE" > "$ARTIFACTS_FILE.tmp" && mv "$ARTIFACTS_FILE.tmp" "$ARTIFACTS_FILE"
+# if [ -d "$DIR" ]; then
+#   echo "📦 Updating $ARTIFACTS_FILE"
 
-else
-  echo "❌ Directory $DIR does not exist"
-  exit 1
-fi
+#   # Create file if it doesn't exist
+#   [[ -f "$ARTIFACTS_FILE" ]] || echo '{}' > "$ARTIFACTS_FILE"
+
+#   # Use jq to update the artifact entry
+#   jq --arg type "$TYPE" \
+#      --arg registry "$REGISTRY" \
+#      --arg key "$SCOPE/$ARTIFACT_NAME" \
+#      --arg tag "$ARTIFACT_TAG" \
+#      '
+#      .[$type] |= . // {} |
+#      .[$type][$registry] |= . // {} |
+#      .[$type][$registry][$key] = $tag
+#      ' "$ARTIFACTS_FILE" > "$ARTIFACTS_FILE.tmp" && mv "$ARTIFACTS_FILE.tmp" "$ARTIFACTS_FILE"
+
+# else
+#   echo "❌ Directory $DIR does not exist"
+#   exit 1
+# fi
