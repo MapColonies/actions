@@ -24,6 +24,10 @@ runs:
       with:
         path: ${{ inputs.path }}
 
+    - name: debug
+      run: pwd && ls -la
+      shell: bash
+
     - name: Set up Node.js
       uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
       with:
