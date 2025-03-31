@@ -14,8 +14,7 @@ inputs:
     default: ${{ github.repository }}
   path:
     description: 'Path to the package to publish'
-    required: false
-    default: ${{ github.workspace }}
+    required: true
 runs:
   using: 'composite'
   steps:
