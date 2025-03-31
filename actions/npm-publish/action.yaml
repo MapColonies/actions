@@ -24,10 +24,6 @@ runs:
       with:
         path: ${{ inputs.path }}
 
-    - name: cd into package directory
-      run: cd ${{ inputs.path }}
-      shell: bash
-
     - name: Set up Node.js
       uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
       with:
@@ -36,12 +32,15 @@ runs:
     - name: Install dependencies
       run: npm ci
       shell: bash
+      working-directory: ${{ inputs.path }}
 
     - name: Run prepack script
       run: npm run prepack
       shell: bash
+      working-directory: ${{ inputs.path }}
 
     - name: Publish package to npm
       uses: JS-DevTools/npm-publish@4b07b26a2f6e0a51846e1870223e545bae91c552 #v3
       with:
         token: ${{ inputs['npm-token'] }}
+        package: ${{ inputs.path }}/package.json
