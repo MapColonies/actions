@@ -24,3 +24,4 @@ jobs:
         with:
           node-version: ${{ inputs.node-version }}
           npm-token: ${{ secrets.NPM_TOKEN }}
+          path: ./test
