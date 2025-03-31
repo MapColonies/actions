@@ -26,6 +26,6 @@ jobs:
       - name: Test Build and push Docker Image
         uses: ./actions/build-and-push-docker
         with:
-          context: .
+          context: ./test
           scope: infra
           registry: ${{ secrets.ACR_URL }}
