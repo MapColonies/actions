@@ -43,4 +43,4 @@ runs:
       uses: JS-DevTools/npm-publish@4b07b26a2f6e0a51846e1870223e545bae91c552 #v3
       with:
         token: ${{ inputs['npm-token'] }}
-        package: ${{ inputs.path }}/package.json
+        package: ${{ inputs.path }}
