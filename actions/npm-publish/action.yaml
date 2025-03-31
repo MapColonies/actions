@@ -21,6 +21,8 @@ runs:
   steps:
     - name: Checkout helm chart repository
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      with:
+        path: ${{ inputs.path }}
 
     - name: Set up Node.js
       uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
@@ -30,15 +32,12 @@ runs:
     - name: Install dependencies
       run: npm ci
       shell: bash
-      working-directory: ${{ inputs.path }}
 
     - name: Run prepack script
       run: npm run prepack
       shell: bash
-      working-directory: ${{ inputs.path }}
 
     - name: Publish package to npm
       uses: JS-DevTools/npm-publish@4b07b26a2f6e0a51846e1870223e545bae91c552 #v3
       with:
         token: ${{ inputs['npm-token'] }}
-      working-directory: ${{ inputs.path }}
