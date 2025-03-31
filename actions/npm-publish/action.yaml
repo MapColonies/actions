@@ -14,7 +14,8 @@ inputs:
     default: ${{ github.repository }}
   path:
     description: 'Path to the package to publish'
-    required: true
+    required: false
+    default: '.'
 runs:
   using: 'composite'
   steps:
@@ -23,8 +24,8 @@ runs:
       with:
         path: ${{ inputs.path }}
 
-    - name: debug
-      run: pwd && ls -la
+    - name: cd into package directory
+      run: cd ${{ inputs.path }}
       shell: bash
 
     - name: Set up Node.js
