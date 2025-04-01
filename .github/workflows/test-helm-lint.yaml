@@ -25,3 +25,7 @@ jobs:
         with:
           repository: ${{ github.repository }}
           chartDirs: "./infra/test-helm"
+
+      - name: Print changed charts
+        if: steps.helm-lint.outputs.changed == 'true'
+        run: echo "Charts were changed and linted."
