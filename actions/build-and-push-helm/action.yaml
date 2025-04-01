@@ -5,10 +5,6 @@ inputs:
     description: "Scope or namespace for the Helm chart."
     required: true
     default: ""
-  repository:
-    description: "Repository name for the Docker image (defaults to current GitHub repository)."
-    required: false
-    default: ${{ github.repository }}
   context:
     description: "Path to the helm directory."
     required: true
