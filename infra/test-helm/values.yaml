@@ -15,7 +15,7 @@ ingress:
   enabled: false
   annotations: {}
   hosts:
-    - host: chart-example.local
+    - host: chart-example-test.local
       paths: []
   tls: []
 

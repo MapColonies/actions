@@ -9,6 +9,10 @@ on:
     paths:
       - "actions/helm-lint/**"
 
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
   test-helm-lint:
     runs-on: ubuntu-latest
@@ -20,3 +24,7 @@ jobs:
         uses: ./actions/helm-lint
         with:
           chartDirs: "./infra/test-helm"
+
+      - name: Print changed charts
+        if: steps.helm-lint.outputs.changed == 'true'
+        run: echo "Charts were changed and linted."

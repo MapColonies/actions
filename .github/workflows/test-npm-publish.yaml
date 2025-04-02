@@ -24,4 +24,4 @@ jobs:
         with:
           node-version: ${{ inputs.node-version }}
           npm-token: ${{ secrets.NPM_TOKEN }}
-          repository: ${{ github.repository }}
+          path: ./test
