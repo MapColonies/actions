@@ -8,7 +8,7 @@ on:
       - master
     paths:
       - "actions/build-and-push-docker/**"
-      
+
 jobs:
   test-build-and-push:
     runs-on: ubuntu-latest

@@ -8,7 +8,7 @@ on:
       - master
     paths:
       - "actions/helm-lint/**"
-      
+
 permissions:
   contents: write
   id-token: write
@@ -23,7 +23,6 @@ jobs:
       - name: helm lint
         uses: ./actions/helm-lint
         with:
-          repository: ${{ github.repository }}
           chartDirs: "./infra/test-helm"
 
       - name: Print changed charts
