@@ -14,9 +14,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Checkout shared workflows
-      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      
     - name: Login to registry
       uses: azure/docker-login@15c4aadf093404726ab2ff205b2cdd33fa6d054c # v2
       with:
