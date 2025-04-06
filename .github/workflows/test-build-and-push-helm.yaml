@@ -27,6 +27,6 @@ jobs:
       - name: Test Build and push Helm Chart
         uses: ./actions/build-and-push-helm
         with:
-          context: ./infra/test-helm
+          context: ./infra/helm
           scope: infra
           registry: ${{ secrets.ACR_URL }}

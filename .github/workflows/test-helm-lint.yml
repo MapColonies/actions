@@ -23,7 +23,7 @@ jobs:
       - name: helm lint
         uses: ./actions/helm-lint
         with:
-          chartDirs: "./infra/test-helm"
+          chartDirs: "./infra/helm"
 
       - name: Print changed charts
         if: steps.helm-lint.outputs.changed == 'true'
