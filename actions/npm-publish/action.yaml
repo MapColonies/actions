@@ -8,10 +8,6 @@ inputs:
   npm-token:
     description: 'NPM authentication token'
     required: true
-  repository:
-    description: 'Repository to checkout'
-    required: true
-    default: ${{ github.repository }}
   path:
     description: 'Path to the package to publish'
     required: false
