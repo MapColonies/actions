@@ -22,3 +22,5 @@ jobs:
 
       - name: helm lint
         uses: ./actions/eslint
+        with:
+          path: ./test

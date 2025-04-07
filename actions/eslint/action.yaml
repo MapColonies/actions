@@ -5,6 +5,10 @@ inputs:
     description: "Node.js version"
     default: "20"
     required: false
+  path:
+    description: "Path to the helm chart"
+    default: "."
+    required: false
 
 runs:
   using: "composite"
@@ -19,6 +23,8 @@ runs:
 
     - run: npm ci
       shell: bash
+      working-directory: ${{ inputs.path }}
 
     - run: npm run lint
       shell: bash
+      working-directory: ${{ inputs.path }}
