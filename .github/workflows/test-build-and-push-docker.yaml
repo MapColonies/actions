@@ -32,10 +32,10 @@ jobs:
           registry: ${{ secrets.ACR_URL }}
 
       - name: Debug output
-        run: echo "Built image ${{ steps.build.outputs }}"
+        run: echo "Built image $DOCKER_IMAGE_NAME"
         shell: bash
 
       - name: Test Push Docker Image 
         uses: ./actions/push-docker
         with:
-          image-name: ${{ steps.build.outputs }}
+          image-name: $DOCKER_IMAGE_NAME
