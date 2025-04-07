@@ -31,7 +31,7 @@ jobs:
           scope: infra
           registry: ${{ secrets.ACR_URL }}
 
-      - name: Test Push Docker Image
+      - name: Test Push Docker Image 
         uses: ./actions/push-docker
         with:
           image-name: ${{ steps.build.outputs.docker_image_name }}
