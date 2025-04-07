@@ -31,6 +31,10 @@ jobs:
           scope: infra
           registry: ${{ secrets.ACR_URL }}
 
+      - name: Debug output
+        run: echo "Built image ${{ steps.build.outputs.docker_image_name }}"
+        shell: bash
+
       - name: Test Push Docker Image 
         uses: ./actions/push-docker
         with:
