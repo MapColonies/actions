@@ -7,7 +7,7 @@ on:
     branches:
       - master
     paths:
-      - "actions/build-and-push-docker/**"
+      - "actions/build-docker/**"
 
 jobs:
   test-build-and-push:
@@ -25,7 +25,7 @@ jobs:
 
       - name: Test Build Docker Image
         id: build
-        uses: ./actions/build-and-push-docker
+        uses: ./actions/build-docker
         with:
           context: ./test
           scope: infra

@@ -1,4 +1,4 @@
-name: "Build and Push Docker Image"
+name: "Build Docker Image"
 description: "Builds a Docker image"
 inputs:
   context:
@@ -30,9 +30,9 @@ runs:
         REPO_NAME=$(basename "${{ inputs.repository }}")
         DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.scope }}/${REPO_NAME}:${IMAGE_TAG}"
         echo "DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME,,}" >> $GITHUB_ENV
+        echo "docker_image_name=$DOCKER_IMAGE_NAME" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: Build the docker image
-      id: build
       run: docker build ${{ inputs.context }} -t ${{ env.DOCKER_IMAGE_NAME }}
       shell: bash
