@@ -7,6 +7,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: debug
+      run: |
+        echo "Image name: ${{ inputs.image-name }}"
+      shell: bash
+
     - name: Push docker image
       run: docker push ${{ inputs.image-name }}
       shell: bash
