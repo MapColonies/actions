@@ -23,9 +23,15 @@ jobs:
           username: ${{ secrets.ACR_PUSH_USER }}
           password: ${{ secrets.ACR_PUSH_TOKEN }}
 
-      - name: Test Build and push Docker Image
+      - name: Test Build Docker Image
+        id: build
         uses: ./actions/build-and-push-docker
         with:
           context: ./test
           scope: infra
           registry: ${{ secrets.ACR_URL }}
+
+      - name: Test Push Docker Image
+        uses: ./actions/push-docker
+        with:
+          image-name: ${{ steps.build.outputs.docker_image_name }}

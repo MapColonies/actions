@@ -4,7 +4,6 @@ inputs:
   context:
     description: "Path to the Docker build context."
     required: true
-
   repository:
     description: "Repository name for the Docker image (defaults to current GitHub repository)."
     required: false
@@ -15,6 +14,10 @@ inputs:
   registry:
     description: Azure Registry to authenticate against.
     required: true
+outputs:
+  docker_image_name:
+    description: "The name of the Docker image built."
+    value: ${{ steps.build.outputs.docker_image_name }}
 runs:
   using: "composite"
   steps:
@@ -30,9 +33,6 @@ runs:
       shell: bash
 
     - name: Build the docker image
+      id: build
       run: docker build ${{ inputs.context }} -t ${{ env.DOCKER_IMAGE_NAME }}
-      shell: bash
-
-    - name: Push docker image
-      run: docker push ${{ env.DOCKER_IMAGE_NAME }}
       shell: bash
