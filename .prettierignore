@@ -10,4 +10,3 @@ release-please-config.json
 
 # Ignore package lock file
 test/package-lock.json
-
