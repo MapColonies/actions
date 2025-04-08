@@ -1,0 +1,31 @@
+name: "OpenAPI Lint"
+description: "Installs dependencies, runs code linting, and validates OpenAPI spec using Redocly CLI"
+
+inputs:
+  node-version:
+    description: "Node.js version to use"
+    required: false
+    default: "20"
+  openapi-file:
+    description: "Path to the OpenAPI file (e.g. ./openapi.yaml)"
+    required: false
+    default: "./openapi3.yaml"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install dependencies
+      run: npm ci
+      shell: bash
+
+    - name: OpenAPI Lint
+      run: npx @redocly/cli lint --format=github-actions ${{ inputs.openapi-file }}
+      shell: bash

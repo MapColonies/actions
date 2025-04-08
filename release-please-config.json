@@ -19,7 +19,12 @@
         "package-name": "build-and-push-helm",
         "extra-files": ["README.md"]
       },
-      "actions/helm-lint": {
+      "actions/eslint": {
+        "release-type": "simple",
+        "package-name": "eslint",
+        "extra-files": ["README.md"]
+      },
+        "actions/helm-lint": {
         "release-type": "simple",
         "package-name": "helm-lint",
         "extra-files": ["README.md"]
