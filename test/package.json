@@ -4,9 +4,12 @@
     "description": "A GitHub Action to publish npm packages.",
     "main": "index.js",
     "scripts": {
-      "prepack": "echo \"Running prepack script...\"",
-      "lint": "eslint ."
+        "prepack": "echo \"Running prepack script...\"",
+        "lint": "eslint ."
     },
     "author": "Your Name",
-    "license": "MIT"
-  }
+    "license": "MIT",
+    "devDependencies": {
+        "eslint": "^9.24.0"
+    }
+}
