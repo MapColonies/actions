@@ -2,7 +2,7 @@
     "actions/artifactory-login": "1.1.1",
     "actions/build-and-push-docker": "1.1.1",
     "actions/build-and-push-helm": "1.1.1",
-    "actions/eslint": "1.1.1",
+    "actions/eslint": "1.2.0",
     "actions/helm-lint": "1.1.1",
     "actions/npm-publish": "1.1.1",
     "actions/update-artifacts-file": "1.1.1",
