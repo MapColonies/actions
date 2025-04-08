@@ -10,6 +10,10 @@ inputs:
     description: "Path to the OpenAPI file (e.g. ./openapi.yaml)"
     required: false
     default: "./openapi3.yaml"
+  path:
+    description: "Path to the Node.js directory"
+    required: false
+    default: "."
 
 runs:
   using: "composite"
@@ -25,7 +29,9 @@ runs:
     - name: Install dependencies
       run: npm ci
       shell: bash
+      working-directory: ${{ inputs.path }}
 
     - name: OpenAPI Lint
       run: npx @redocly/cli lint --format=github-actions ${{ inputs.openapi-file }}
       shell: bash
+      working-directory: ${{ inputs.path }}
