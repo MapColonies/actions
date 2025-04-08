@@ -23,8 +23,6 @@ runs:
 
     - run: npm ci
       shell: bash
-      working-directory: ${{ inputs.path }}
 
     - run: npm run lint
       shell: bash
-      working-directory: ${{ inputs.path }}
