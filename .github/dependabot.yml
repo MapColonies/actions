@@ -1,4 +1,8 @@
 version: 2
+
+permissions:
+  contents: write
+
 updates:
   - package-ecosystem: "github-actions"
     directory: "/actions"
