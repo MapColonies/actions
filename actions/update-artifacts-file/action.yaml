@@ -5,9 +5,6 @@ inputs:
     description: "Scope or namespace for the Helm chart."
     required: true
     default: ""
-  repository:
-    description: "Repository for the Helm Chart."
-    required: true
   registry:
     description: "Registry to push the artifact to."
     required: true
@@ -63,4 +60,3 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact_tag }}
         TYPE: ${{ inputs.type }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
-        REPOSITORY: ${{ inputs.repository }}
