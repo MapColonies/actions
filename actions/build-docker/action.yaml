@@ -8,8 +8,8 @@ inputs:
     description: "Repository name for the Docker image (defaults to current GitHub repository)."
     required: false
     default: ${{ github.repository }}
-  scope:
-    description: "Scope or namespace for the Docker image."
+  domain:
+    description: "domain or namespace for the Docker image."
     required: true
   registry:
     description: Azure Registry to authenticate against.
@@ -28,7 +28,7 @@ runs:
       run: |
         IMAGE_TAG="${{ github.ref_name }}"
         REPO_NAME=$(basename "${{ inputs.repository }}")
-        DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.scope }}/${REPO_NAME}:${IMAGE_TAG}"
+        DOCKER_IMAGE_NAME="${{ inputs.registry }}/${{ inputs.domain }}/${REPO_NAME}:${IMAGE_TAG}"
         echo "DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME,,}" >> $GITHUB_ENV
         echo "docker_image_name=$DOCKER_IMAGE_NAME" >> $GITHUB_OUTPUT
       shell: bash
