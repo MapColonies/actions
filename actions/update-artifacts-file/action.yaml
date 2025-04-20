@@ -4,7 +4,6 @@ inputs:
   scope:
     description: "Scope or namespace for the Helm chart."
     required: true
-    default: ""
   registry:
     description: "Registry to push the artifact to."
     required: true
