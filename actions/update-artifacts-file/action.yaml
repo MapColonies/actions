@@ -44,6 +44,7 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact_tag }}
         TYPE: ${{ inputs.type }}
         REGISTRY: ${{ inputs.registry }}
+        REPOSITORY: ${{ github.repository }}
 
     - name: Set commit Permission
       run: chmod +x ./commit-changes.sh
@@ -59,3 +60,4 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact_tag }}
         TYPE: ${{ inputs.type }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
+        REPOSITORY: ${{ github.repository }}
