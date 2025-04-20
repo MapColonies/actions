@@ -13,6 +13,6 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Lint and Test Charts
-        uses: MapColonies/actions/actions/helm-lint@helm-lint-v1.1.0
+        uses: MapColonies/actions/actions/helm-lint@helm-lint-v1.2.0
         with:
           chartDirs: "./testing/helm"
