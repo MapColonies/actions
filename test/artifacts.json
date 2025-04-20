@@ -1,7 +1,8 @@
 {
   "docker": {
     "acrarolibotnonprod.azurecr.io": {
-      "infra/sftpgo": "v2.0.2"
+      "infra/sftpgo": "v2.0.2",
+      "/": ""
     }
   },
   "helm": {
@@ -9,5 +10,7 @@
       "jenkins": "5.0.16"
     }
   },
-  "git": ["MapColonies/helm-charts"]
+  "git": [
+    "MapColonies/helm-charts"
+  ]
 }
