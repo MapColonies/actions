@@ -21,7 +21,7 @@ jobs:
         with:
           type: "docker"
           context: actions/update-artifacts-file
-          scope: test
+          scope: infra
           artifact-name: "sftpgo"
           artifact-tag: "v2.0.5"
           registry: ${{ secrets.ACR_URL }}

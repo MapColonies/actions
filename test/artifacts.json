@@ -1,7 +1,7 @@
 {
   "docker": {
     "acrarolibotnonprod.azurecr.io": {
-      "test/sftpgo": "v2.0.2",
+      "infra/sftpgo": "v2.0.2",
       "/": ""
     }
   },
