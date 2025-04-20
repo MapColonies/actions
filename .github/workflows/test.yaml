@@ -15,4 +15,4 @@ jobs:
       - name: Lint and Test Charts
         uses: MapColonies/actions/actions/helm-lint@helm-lint-v1.1.0
         with:
-          chartDirs: "./test/helm"
+          chartDirs: "./testing/helm"
