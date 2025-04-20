@@ -12,21 +12,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Test Login to Artifactory Action
-        uses: MapColonies/actions/actions/artifactory-login@artifactory-login-v1.1.0
+      - name: Lint and Test Charts
+        uses: MapColonies/shared-workflows/actions/helm-lint@helm-lint-v1
         with:
-          registry: ${{ secrets.ACR_URL }}
-          username: ${{ secrets.ACR_PUSH_USER }}
-          password: ${{ secrets.ACR_PUSH_TOKEN }}
-
-      - name: Test Build Docker Image
-        uses: MapColonies/actions/actions/build-docker@build-docker-v1.1.0
-        with:
-          context: ./test
-          domain: infra
-          registry: ${{ secrets.ACR_URL }}
-      
-      - name: Test Push Docker Image
-        uses: MapColonies/actions/actions/build-docker@push-docker-v1.1.0
-        with:
-          image_name: $DOCKER_IMAGE_NAME
+          chartDirs: infra/monitoring,infra/sftpgo
+          repository: ${{ github.repository }}
