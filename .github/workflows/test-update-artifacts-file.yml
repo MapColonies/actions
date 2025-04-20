@@ -23,6 +23,6 @@ jobs:
           context: actions/update-artifacts-file
           scope: infra
           artifact-name: "sftpgo"
-          artifact-tag: "v2.0.4"
+          artifact-tag: "v2.0.5"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
