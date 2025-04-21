@@ -1,5 +1,6 @@
 #!/bin/bash
 cd $SCOPE
+pwd
 git config --global user.name "mapcolonies[bot]"
 git config --global user.email "devops[bot]@mapcolonies.com"
 
