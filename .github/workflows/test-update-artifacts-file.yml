@@ -22,7 +22,7 @@ jobs:
           type: "docker"
           context: actions/update-artifacts-file
           domain: test
-          artifact-name: "sftpgo"
-          artifact-tag: "v2.0.3"
+          artifact_name: "sftpgo"
+          artifact_tag: "v2.0.3"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
