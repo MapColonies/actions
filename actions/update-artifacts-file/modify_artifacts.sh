@@ -7,7 +7,7 @@ if [ -d "$DOMAIN" ]; then
   # Ensure nested structure and assign artifact tag
   jq --arg type "$TYPE" \
     --arg registry "$REGISTRY" \
-    --arg key "${element}/$ARTIFACT_NAME" \
+    --arg key "${DOMAIN}/$ARTIFACT_NAME" \
     --arg tag "$ARTIFACT_TAG" \
     '.[$type][$registry][$key] = $tag' "$path" > tmp.json && mv tmp.json "$path"
 else
