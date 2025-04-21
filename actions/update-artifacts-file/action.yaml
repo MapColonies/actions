@@ -58,4 +58,3 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact_tag }}
         TYPE: ${{ inputs.type }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
-      working-directory: ${{ inputs.context }}
