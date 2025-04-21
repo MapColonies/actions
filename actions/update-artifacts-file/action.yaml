@@ -2,20 +2,19 @@ name: "Update Artifacts File"
 description: "An action to update the artifacts file"
 inputs:
   scope:
-    description: "Scope or namespace for the Helm chart."
+    description: "Scope or namespace for the artifact."
     required: true
   registry:
     description: "Registry to push the artifact to."
     required: true
   context:
     description: "Path to the helm directory."
-    required: true
+    required: false
     default: "./helm"
   type:
     description: "Artifact`s type"
     type: string
     required: true
-    default: "docker"
   artifact_name:
     description: "Artifact`s name"
     type: string
@@ -44,15 +43,14 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact_tag }}
         TYPE: ${{ inputs.type }}
         REGISTRY: ${{ inputs.registry }}
-        REPOSITORY: ${{ github.repository }}
 
     - name: Set commit Permission
-      run: chmod +x ./commit-changes.sh
+      run: chmod +x ./commit_changes.sh
       shell: bash
       working-directory: ${{ inputs.context }}
 
     - name: Run commit changes script
-      run: ${{ inputs.context }}/commit-changes.sh
+      run: ${{ inputs.context }}/commit_changes.sh
       shell: bash
       env:
         SCOPE: ${{ inputs.scope }}
@@ -60,4 +58,3 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact_tag }}
         TYPE: ${{ inputs.type }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
-        REPOSITORY: ${{ github.repository }}
