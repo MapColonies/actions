@@ -9,9 +9,14 @@
         "package-name": "artifactory-login",
         "extra-files": ["README.md"]
       },
-      "actions/build-and-push-docker": {
+      "actions/build-docker": {
         "release-type": "simple",
-        "package-name": "build-and-push-docker",
+        "package-name": "build-docker",
+        "extra-files": ["README.md"]
+      },
+      "actions/push-docker": {
+        "release-type": "simple",
+        "package-name": "push-docker",
         "extra-files": ["README.md"]
       },
       "actions/build-and-push-helm": {

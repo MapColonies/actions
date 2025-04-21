@@ -3,7 +3,7 @@ name: Release shared-workflows
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   release-please:
