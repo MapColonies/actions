@@ -4,7 +4,7 @@
     "actions/build-and-push-helm": "1.1.0",
     "actions/eslint": "1.1.0",
     "actions/helm-lint": "1.2.0",
-    "actions/npm-publish": "1.1.0",
+    "actions/npm-publish": "1.2.0",
     "actions/update-artifacts-file": "1.2.0",
     ".": "1.0.0"
 }
