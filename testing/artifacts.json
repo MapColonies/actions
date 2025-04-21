@@ -1,12 +1,14 @@
 {
   "docker": {
     "acrarolibotnonprod.azurecr.io": {
-      "test/sftpgo": "v2.0.2"
+      "test/sftpgo": "v2.0.2",
+      "/": ""
     }
   },
   "helm": {
     "acrarolibotnonprod.azurecr.io": {
-      "jenkins": "5.0.16"
+      "jenkins": "5.0.16",
+      "/": ""
     }
   },
   "git": [
