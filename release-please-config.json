@@ -34,11 +34,6 @@
         "package-name": "helm-lint",
         "extra-files": ["README.md"]
       },
-      "actions/npm-publish": {
-        "release-type": "simple",
-        "package-name": "npm-publish",
-        "extra-files": ["README.md"]
-      },
       "actions/update-artifacts-file": {
         "release-type": "simple",
         "package-name": "update-artifacts-file",
