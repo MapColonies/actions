@@ -2,7 +2,8 @@
   "docker": {
     "acrarolibotnonprod.azurecr.io": {
       "test/sftpgo": "v2.0.2",
-      "/": ""
+      "/": "",
+      "/sftpgo": "v2.0.3"
     }
   },
   "helm": {
