@@ -5,9 +5,10 @@ on:
   workflow_call:
   push:
     branches:
-      - master
+      - fix-update-artifacts
     paths:
       - "actions/update-artifacts-file/**"
+      - ".github/workflows/test-update-artifacts-file.yml"
 
 jobs:
   update-artifacts-json:
@@ -19,10 +20,10 @@ jobs:
       - name: Update artifacts.json
         uses: ./actions/update-artifacts-file
         with:
-          type: "docker"
+          type: "helm"
           context: actions/update-artifacts-file
           domain: test
-          artifact_name: "sftpgo"
-          artifact_tag: "v2.0.4"
+          artifact_name: "jenkins"
+          artifact_tag: "5.0.16"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
