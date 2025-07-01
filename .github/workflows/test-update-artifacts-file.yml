@@ -31,10 +31,10 @@ jobs:
       - name: Update artifacts.json
         uses: ./actions/update-artifacts-file
         with:
-          type: "docker"
+          type: "helm"
           context: actions/update-artifacts-file
           domain: infra
-          artifact_name: "sftpgo"
-          artifact_tag: "v2.0.7"
+          artifact_name: "jenkins"
+          artifact_tag: 5.0.17"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
