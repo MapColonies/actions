@@ -1,6 +1,4 @@
 #!/bin/bash
-set -e
-
 ARTIFACTS_PATH="$TARGET_DIR/$DOMAIN/artifacts.json"
 
 # Make sure the directory exists
