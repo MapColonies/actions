@@ -25,8 +25,9 @@ inputs:
     description: "GitHub token with access to target repository"
     required: true
   target_repo:
-    description: "Target GitHub repository (e.g. org/helm-charts)"
-    required: true
+    description: "Target GitHub repository"
+    required: false
+    default: "mapcolonies/helm-charts"
 
 runs:
   using: "composite"

@@ -20,4 +20,4 @@ jq --arg type "$TYPE" \
    .[$type][$registry][$key] = $tag
 ' "$ARTIFACTS_PATH" > "$tmp_file" && mv "$tmp_file" "$ARTIFACTS_PATH"
 
-echo "✅ artifacts.json updated successfully at $ARTIFACTS_PATH"
+echo "artifacts.json updated successfully at $ARTIFACTS_PATH"

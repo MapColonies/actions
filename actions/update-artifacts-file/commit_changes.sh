@@ -11,10 +11,10 @@ git commit -m "chore: update artifacts.json for $DOMAIN" -m "with $TYPE artifact
 
 success=false
 for ((i=1; i<=5; i++)); do
-  echo "🔁 Attempt $i to push changes..."
+  echo "Attempt $i to push changes..."
   if git push https://x-access-token:$GITHUB_TOKEN@github.com/$TARGET_REPO.git; then
     success=true
-    echo "✅ Push succeeded"
+    echo "Push succeeded"
     break
   else
     echo "⚠️ Push failed, retrying after pull"
@@ -24,6 +24,6 @@ for ((i=1; i<=5; i++)); do
 done
 
 if [ "$success" = false ]; then
-  echo "❌ Failed to push changes after 5 attempts."
+  echo "Failed to push changes after 5 attempts."
   exit 1
 fi
