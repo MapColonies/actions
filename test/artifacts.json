@@ -6,7 +6,8 @@
   },
   "helm": {
     "acrarolibotnonprod.azurecr.io": {
-      "jenkins": "5.0.16"
+      "jenkins": "5.0.16",
+      "test/jenkins": "5.0.16"
     }
   },
   "git": [
