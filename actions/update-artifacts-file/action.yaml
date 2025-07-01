@@ -36,11 +36,11 @@ runs:
         git clone https://x-access-token:${{ inputs.github_token }}@github.com/${{ inputs.target_repo }}.git target-repo
       shell: bash
 
-    - name: Set Execute Permission on modify script
+    - name: Set execute permission on modify script
       run: chmod +x ${{ inputs.context }}/modify_artifacts.sh
       shell: bash
 
-    - name: Run modify artifacts Script
+    - name: Run modify artifacts script
       run: ${{ inputs.context }}/modify_artifacts.sh
       shell: bash
       env:
@@ -51,7 +51,7 @@ runs:
         REGISTRY: ${{ inputs.registry }}
         TARGET_DIR: target-repo
 
-    - name: Set Execute Permission on commit script
+    - name: Set execute permission on commit script
       run: chmod +x ${{ inputs.context }}/commit_changes.sh
       shell: bash
 
@@ -66,3 +66,7 @@ runs:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         TARGET_REPO: ${{ inputs.target_repo }}
         TARGET_DIR: target-repo
+
+    - name: Clean up target repo folder
+      run: rm -rf target-repo
+      shell: bash
