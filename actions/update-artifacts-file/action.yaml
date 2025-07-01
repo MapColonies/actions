@@ -34,7 +34,7 @@ runs:
   steps:
     - name: Clone target repo
       run: |
-        git clone https://x-access-token:${{ inputs.github_token }}@github.com/${{ inputs.target_repo }}.git target-repo
+        git clone https://x-access-token:${{ inputs.github_token }}@github.com/${{ inputs.target_repo }}.git temp_helm_charts
       shell: bash
 
     - name: Set execute permission on modify script
@@ -50,7 +50,7 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact_tag }}
         TYPE: ${{ inputs.type }}
         REGISTRY: ${{ inputs.registry }}
-        TARGET_DIR: target-repo
+        TARGET_DIR: temp_helm_charts
 
     - name: Set execute permission on commit script
       run: chmod +x ${{ inputs.context }}/commit_changes.sh
@@ -66,8 +66,8 @@ runs:
         TYPE: ${{ inputs.type }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
         TARGET_REPO: ${{ inputs.target_repo }}
-        TARGET_DIR: target-repo
+        TARGET_DIR: temp_helm_charts
 
     - name: Clean up target repo folder
-      run: rm -rf target-repo
+      run: rm -rf temp_helm_charts
       shell: bash

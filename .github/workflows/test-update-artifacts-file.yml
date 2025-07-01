@@ -24,6 +24,6 @@ jobs:
           context: actions/update-artifacts-file
           domain: infra
           artifact_name: "jenkins"
-          artifact_tag: "5.0.18"
+          artifact_tag: "5.0.19"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
