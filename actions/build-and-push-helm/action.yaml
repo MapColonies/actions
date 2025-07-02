@@ -15,8 +15,10 @@ inputs:
 outputs:
   chart:
     description: "Name of the Helm chart."
+    value: ${{ steps.set_chart_name.outputs.chart }}
   ver:
     description: "Version of the Helm chart."
+    value: ${{ steps.set_chart_version.outputs.ver }}
 runs:
   using: "composite"
   steps:
