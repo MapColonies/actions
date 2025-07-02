@@ -48,20 +48,21 @@ runs:
       shell: bash
 
     - name: Package chart into tgz file
+      id: package_chart
       run: |
-        helm package . --dependency-update
+        PACKAGE_OUTPUT=$(helm package . --dependency-update)
+        PACKAGE_FILE=$(echo "$PACKAGE_OUTPUT" | awk -F ': ' '/Successfully packaged chart and saved it to:/ {print $2}')
+        echo "package_file=$PACKAGE_FILE" >> $GITHUB_OUTPUT
       working-directory: ${{ inputs.context }}
       shell: bash
 
-    - name: debugging
+    - name: Debug output filename
       run: |
-        echo ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz 
-      working-directory: ${{ inputs.context }}
+        echo "Packaged chart file: ${{ steps.package_chart.outputs.package_file }}"
       shell: bash
 
     - name: Publish chart to ACR
       run: |
-        helm push ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz \
+        helm push "${{ steps.package_chart.outputs.package_file }}" \
           oci://${{ inputs.registry }}/helm/${{ inputs.scope }}
-      working-directory: ${{ inputs.context }}
       shell: bash
