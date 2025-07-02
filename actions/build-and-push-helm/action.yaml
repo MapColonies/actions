@@ -1,8 +1,8 @@
 name: "Build and Push Helm Chart"
 description: "Builds and publishes a Helm chart to the specified registry."
 inputs:
-  scope:
-    description: "Scope or namespace for the Helm chart."
+  domain:
+    description: "Domain or namespace for the Helm chart."
     required: true
     default: ""
   context:
@@ -33,13 +33,8 @@ runs:
       working-directory: ${{ inputs.context }}
       shell: bash
 
-    - name: Debug output filename
-      run: |
-        echo "Packaged chart file: ${{ steps.package_chart.outputs.package_file }}"
-      shell: bash
-
     - name: Publish chart to ACR
       run: |
         helm push "${{ steps.package_chart.outputs.package_file }}" \
-          oci://${{ inputs.registry }}/helm/${{ inputs.scope }}
+          oci://${{ inputs.registry }}/helm/${{ inputs.domain }}
       shell: bash
