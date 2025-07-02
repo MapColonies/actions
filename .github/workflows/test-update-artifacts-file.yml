@@ -5,9 +5,10 @@ on:
   workflow_call:
   push:
     branches:
-      - master
+      - fix-update-artifacts
     paths:
       - "actions/update-artifacts-file/**"
+      - ".github/workflows/test-update-artifacts-file.yml"
 
 jobs:
   update-artifacts-json:
@@ -21,8 +22,8 @@ jobs:
         with:
           type: "docker"
           context: actions/update-artifacts-file
-          domain: test
+          domain: infra
           artifact_name: "sftpgo"
-          artifact_tag: "v2.0.4"
+          artifact_tag: "v2.0.8"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}

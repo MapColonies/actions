@@ -1,8 +1,8 @@
 name: "Build and Push Helm Chart"
 description: "Builds and publishes a Helm chart to the specified registry."
 inputs:
-  scope:
-    description: "Scope or namespace for the Helm chart."
+  domain:
+    description: "Domain or namespace for the Helm chart."
     required: true
     default: ""
   context:
@@ -12,11 +12,7 @@ inputs:
   registry:
     description: "Azure Registry to authenticate against."
     required: true
-outputs:
-  chart:
-    description: "Name of the Helm chart."
-  ver:
-    description: "Version of the Helm chart."
+
 runs:
   using: "composite"
   steps:
@@ -28,31 +24,17 @@ runs:
       with:
         version: "v3.12.0"
 
-    - name: Get chart's name
-      id: set_chart_name
-      run: |
-        CHART=$(grep '^name:' Chart.yaml | awk '{print $2}')
-        echo "chart=$CHART" >> $GITHUB_OUTPUT
-      working-directory: ${{ inputs.context }}
-      shell: bash
-
-    - name: Get the chart's version
-      id: set_chart_version
-      run: |
-        VER=$(grep '^version:' Chart.yaml | awk '{print $2}')
-        echo "ver=$VER" >> $GITHUB_OUTPUT
-      working-directory: ${{ inputs.context }}
-      shell: bash
-
     - name: Package chart into tgz file
+      id: package_chart
       run: |
-        helm package . --dependency-update
+        PACKAGE_OUTPUT=$(helm package . --dependency-update)
+        PACKAGE_FILE=$(echo "$PACKAGE_OUTPUT" | awk -F ': ' '/Successfully packaged chart and saved it to:/ {print $2}')
+        echo "package_file=$PACKAGE_FILE" >> $GITHUB_OUTPUT
       working-directory: ${{ inputs.context }}
       shell: bash
 
     - name: Publish chart to ACR
       run: |
-        helm push ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz \
-          oci://${{ inputs.registry }}/helm/${{ inputs.scope }}
-      working-directory: ${{ inputs.context }}
+        helm push "${{ steps.package_chart.outputs.package_file }}" \
+          oci://${{ inputs.registry }}/helm/${{ inputs.domain }}
       shell: bash
