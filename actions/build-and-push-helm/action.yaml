@@ -50,6 +50,12 @@ runs:
       working-directory: ${{ inputs.context }}
       shell: bash
 
+    - name: debugging
+      run: |
+        echo ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz 
+      working-directory: ${{ inputs.context }}
+      shell: bash
+
     - name: Publish chart to ACR
       run: |
         helm push ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz \
