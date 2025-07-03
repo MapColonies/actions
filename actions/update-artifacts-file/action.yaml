@@ -39,11 +39,11 @@ runs:
         path: $TARGET_PATH
 
     - name: Set execute permission on modify script
-      run: chmod +x actions/update-artifacts-file//modify_artifacts.sh
+      run: chmod +x actions/update-artifacts-file/modify_artifacts.sh
       shell: bash
 
     - name: Run modify artifacts script
-      run: actions/update-artifacts-file//modify_artifacts.sh
+      run: actions/update-artifacts-file/modify_artifacts.sh
       shell: bash
       env:
         DOMAIN: ${{ inputs.domain }}
@@ -54,11 +54,11 @@ runs:
         TARGET_DIR: $TARGET_PATH
 
     - name: Set execute permission on commit script
-      run: chmod +x actions/update-artifacts-file//commit_changes.sh
+      run: chmod +x actions/update-artifacts-file/commit_changes.sh
       shell: bash
 
     - name: Commit and push changes
-      run: actions/update-artifacts-file//commit_changes.sh
+      run: actions/update-artifacts-file/commit_changes.sh
       shell: bash
       env:
         DOMAIN: ${{ inputs.domain }}
