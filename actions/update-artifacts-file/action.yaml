@@ -2,7 +2,7 @@ name: "Update Artifacts File"
 description: "An action to update the artifacts file in a different repository"
 
 env:
-  TARGET_PATH: temp_helm_charts
+  TARGET_PATH: temp_repo
 
 inputs:
   domain:
@@ -34,7 +34,7 @@ runs:
     - name: Checkout helm chart repository
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
-        repository: mapcolonies/helm-charts
+        repository: ${{ inputs.target_repo }}
         token: ${{ inputs.github_token }}
         path: $TARGET_PATH
 
