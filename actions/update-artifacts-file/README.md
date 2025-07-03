@@ -17,7 +17,7 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 | Name             | Description                                                                 | Required | Default         |
 |------------------|-----------------------------------------------------------------------------|----------|-----------------|
 | `scope`          | The directory name used as a logical scope for the artifact                | ✅ Yes   |             |
-| `context`        | Path to the directory containing the Helm chart and helper scripts         | ❌ No   | `./helm`        |
+| `scripts_path`        | Path to the directory containing the Helm chart and helper scripts         | ❌ No   | `./helm`        |
 | `registry`       | Registry URL the artifact is pushed to (e.g., ACR address)                 | ✅ Yes   |                |
 | `type`           | Type of artifact (`helm`, `docker`, etc.)                                  | ✅ Yes   |  |
 | `artifact_name`  | Name of the artifact (e.g. `sftpgo`, `minio`)                              | ✅ Yes   |                |
