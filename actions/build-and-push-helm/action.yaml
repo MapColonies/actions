@@ -52,8 +52,6 @@ runs:
 
     - name: Publish chart to ACR
       run: |
-        CHART="${{ steps.set_chart_name.outputs.chart }}"
-        VER="${{ steps.set_chart_version.outputs.ver }}"
-        helm push "$CHART-$VER.tgz" oci://${{ inputs.registry }}/helm/${{ inputs.domain }}
+        helm push "${{ steps.set_chart_name.outputs.chart }}-${{ steps.set_chart_version.outputs.ver }}.tgz" oci://${{ inputs.registry }}/helm/${{ inputs.domain }}
       working-directory: ${{ inputs.context }}
       shell: bash
