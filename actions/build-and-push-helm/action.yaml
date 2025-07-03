@@ -14,8 +14,10 @@ inputs:
 outputs:
   chart:
     description: "The name of the chart."
+    value: ${{ steps.set_chart_name.outputs.chart }}
   ver:
     description: "The version of the chart."
+    value: ${{ steps.set_chart_version.outputs.ver }}
 
 runs:
   using: "composite"
