@@ -32,17 +32,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # - name: Clone target repo
-    #   run: |
-        # git clone https://x-access-token:${{ inputs.github_token }}@github.com/${{ inputs.target_repo }}.git temp_helm_charts
-    #   shell: bash
-
     - name: Checkout helm chart repository
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
         repository: mapcolonies/helm-charts
         token: ${{ inputs.github_token }}
-        # path: temp_helm_charts
+        path: temp_helm_charts
 
     - name: Set execute permission on modify script
       run: chmod +x ${{ inputs.context }}/modify_artifacts.sh
@@ -73,8 +68,8 @@ runs:
         TYPE: ${{ inputs.type }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
         TARGET_REPO: ${{ inputs.target_repo }}
-        # TARGET_DIR: temp_helm_charts
+        TARGET_DIR: temp_helm_charts
 
-    # - name: Clean up target repo folder
+    - name: Clean up target repo folder
       run: rm -rf temp_helm_charts
-    #   shell: bash
+      shell: bash
