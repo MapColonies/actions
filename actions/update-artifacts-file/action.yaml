@@ -27,10 +27,6 @@ inputs:
     description: "Target GitHub repository"
     required: false
     default: "mapcolonies/helm-charts"
-  target_path:
-    description: "Local path to clone the target repo into"
-    required: false
-    default: "temp_helm_charts"
 
 runs:
   using: "composite"
