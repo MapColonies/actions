@@ -10,21 +10,19 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 - Runs a script to update `artifacts.json` with the chart version and metadata
 - Commits and pushes the updated metadata file to the repository
 
----
 
 ## 🛠 Inputs
 
 | Name             | Description                                                                 | Required | Default         |
 |------------------|-----------------------------------------------------------------------------|----------|-----------------|
 | `scope`          | The directory name used as a logical scope for the artifact                | ✅ Yes   |             |
-| `context`        | Path to the directory containing the Helm chart and helper scripts         | ❌ No   | `./helm`        |
 | `registry`       | Registry URL the artifact is pushed to (e.g., ACR address)                 | ✅ Yes   |                |
 | `type`           | Type of artifact (`helm`, `docker`, etc.)                                  | ✅ Yes   |  |
 | `artifact_name`  | Name of the artifact (e.g. `sftpgo`, `minio`)                              | ✅ Yes   |                |
 | `artifact_tag`   | Tag or version of the artifact (e.g. `v1.2.3`, `latest`)                   | ✅ Yes   |                |
 | `github_token`   | GitHub token with permission to commit & push changes                      | ✅ Yes   |                |
 
----
+
 
 ## 🚀 Usage
 
