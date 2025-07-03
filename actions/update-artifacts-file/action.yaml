@@ -8,10 +8,6 @@ inputs:
   registry:
     description: "Registry to push the artifact to."
     required: true
-  context:
-    description: "Path to the action directory."
-    required: false
-    default: "./helm"
   type:
     description: "Artifact type"
     required: true
@@ -44,11 +40,11 @@ runs:
         path: ${{ inputs.target_path }}
 
     - name: Set execute permission on modify script
-      run: chmod +x ${{ inputs.context }}/modify_artifacts.sh
+      run: chmod +x actions/update-artifacts-file//modify_artifacts.sh
       shell: bash
 
     - name: Run modify artifacts script
-      run: ${{ inputs.context }}/modify_artifacts.sh
+      run: actions/update-artifacts-file//modify_artifacts.sh
       shell: bash
       env:
         DOMAIN: ${{ inputs.domain }}
@@ -59,11 +55,11 @@ runs:
         TARGET_DIR: ${{ inputs.target_path }}
 
     - name: Set execute permission on commit script
-      run: chmod +x ${{ inputs.context }}/commit_changes.sh
+      run: chmod +x actions/update-artifacts-file//commit_changes.sh
       shell: bash
 
     - name: Commit and push changes
-      run: ${{ inputs.context }}/commit_changes.sh
+      run: actions/update-artifacts-file//commit_changes.sh
       shell: bash
       env:
         DOMAIN: ${{ inputs.domain }}

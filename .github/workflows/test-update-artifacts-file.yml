@@ -21,7 +21,6 @@ jobs:
         uses: ./actions/update-artifacts-file
         with:
           type: "docker"
-          context: actions/update-artifacts-file
           domain: infra
           artifact_name: "sftpgo"
           artifact_tag: "v2.0.8"
