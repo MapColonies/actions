@@ -1,6 +1,9 @@
 name: "Update Artifacts File"
 description: "An action to update the artifacts file in a different repository"
 
+env:
+  TARGET_PATH: temp_helm_charts
+
 inputs:
   domain:
     description: "Domain or namespace for the artifact."
@@ -37,7 +40,7 @@ runs:
       with:
         repository: mapcolonies/helm-charts
         token: ${{ inputs.github_token }}
-        path: ${{ inputs.target_path }}
+        path: $TARGET_PATH
 
     - name: Set execute permission on modify script
       run: chmod +x actions/update-artifacts-file//modify_artifacts.sh
@@ -52,7 +55,7 @@ runs:
         ARTIFACT_TAG: ${{ inputs.artifact_tag }}
         TYPE: ${{ inputs.type }}
         REGISTRY: ${{ inputs.registry }}
-        TARGET_DIR: ${{ inputs.target_path }}
+        TARGET_DIR: $TARGET_PATH
 
     - name: Set execute permission on commit script
       run: chmod +x actions/update-artifacts-file//commit_changes.sh
@@ -68,8 +71,8 @@ runs:
         TYPE: ${{ inputs.type }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
         TARGET_REPO: ${{ inputs.target_repo }}
-        TARGET_DIR: ${{ inputs.target_path }}
+        TARGET_DIR: $TARGET_PATH
 
     - name: Clean up target repo folder
-      run: rm -rf ${{ inputs.target_path }}
+      run: rm -rf $TARGET_PATH
       shell: bash
