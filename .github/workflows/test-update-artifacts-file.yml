@@ -23,6 +23,6 @@ jobs:
           type: "docker"
           domain: infra
           artifact_name: "sftpgo"
-          artifact_tag: "v2.0.8"
+          artifact_tag: "v2.0.9"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
