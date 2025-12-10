@@ -38,7 +38,11 @@
         "release-type": "simple",
         "package-name": "update-artifacts-file",
         "extra-files": ["README.md"]
-      }
+      },
+			"actions/auto-merge": {
+				"release-type": "simple",
+				"package-name": "auto-merge",
+				"extra-files": ["README.md"]
+			}
     }
 }
-  
