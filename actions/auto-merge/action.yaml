@@ -1,4 +1,4 @@
-name: "Auto-merge PR by label action"
+name: "Auto-merge PR by label"
 description: "Checks if a PR has the 'auto-merge' label and merges it using gh if present"
 
 inputs:
