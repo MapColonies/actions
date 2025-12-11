@@ -1,7 +1,11 @@
 name: Test auto-merge action
 
 on:
+  workflow_dispatch:
+  workflow_call:
   pull_request:
+    paths:
+      - "actions/auto-merge/**"
 
 jobs:
   test-action:
